@@ -1,7 +1,11 @@
-# paddlr
+# paddlr <img src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537203093/paddl_woumjo.jpg" alt="paddlr logo" width="80" height="80"> 
+
 
 ## Project Overview:
 As this was our final project at Maker's Academy, we decided to pay tribute to it's table-tennis culture by creating an application dedicated to the art. The application will link to user's slack accounts, where games can be arranged, ranking systems 
+
+## Day 1: Wireframe using Adobe XD
+![](https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537202882/paddlr-mockup_quiz5s.png)
 
 ## Contributors:
 * [Angela Wolff](https://github.com/Whatapalaver)
