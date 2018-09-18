@@ -6,6 +6,7 @@
   -webkit-box-sizing: border-box;
 }
 
+
 html,
 body {
   width: 100%;
@@ -54,6 +55,8 @@ ul,
   text-decoration: none;
 }
 
+
+
 .paddle-logo {
   border-color: #cb4345;
   float: left;
@@ -89,20 +92,47 @@ ul,
   width: 50%;
 }
 
-.medal-left {
+.games-won-left {
   font-family: "Play", sans-serif;
   font-size: 60px;
   position: absolute;
+  color: #cb4345; 
   top: 0;
   right: 20px;
 }
 
-.medal-right {
+
+
+.games-won-right {
   font-family: "Play", sans-serif;
   font-size: 60px;
   position: absolute;
+  color: #cb4345; 
   top: 0;
   left: 20px;
+}
+
+.score-left{
+  font-family: "Play", sans-serif;
+  font-size: 60px;
+  position: absolute;
+  color: #4C4C4C;
+  top: 0;
+  right: 25px;
+  padding-top: 25%; 
+  font-size: 8em; 
+
+}
+
+.score-right{
+  font-family: "Play", sans-serif;
+  font-size: 60px;
+  position: absolute;
+  color: #4C4C4C;
+  top: 0;
+  left: 25px;
+  padding-top: 25%; 
+  font-size: 8em; 
 }
 
 .player-button {
@@ -113,5 +143,6 @@ ul,
 
 .player-pic {
   border-radius: 50%;
-  width: 350px;
+  width: 80%;
 }
+
