@@ -11,6 +11,12 @@ var Gamesschema = new Schema({
   game_created_at:{
     type: Date,
     default: new Date()
+  },
+
+  score: {
+    type: String,
+    ref: 'Scores',
+    required: false
   }
 
 });
