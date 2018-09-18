@@ -1,7 +1,10 @@
 const express = require("express");
-const routes = require('./routes/api');
+const userRoutes = require('./routes/users');
+const gameRoutes = require('./routes/games');
+const scoreRoutes = require('./routes/scores');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const morgan = require("morgan");
 
 const app = express();
 
@@ -9,7 +12,9 @@ mongoose.connect("mongodb://steph:cheese1@ds161102.mlab.com:61102/steph",  { use
 mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
-app.use('/', routes);
+app.use('/users', userRoutes);
+app.use('/games', gameRoutes);
+app.use('/scores', scoreRoutes);
 
 app.use(function(err, req, res, next){
   // we send the error with an error message
