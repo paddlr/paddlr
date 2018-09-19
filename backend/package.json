@@ -1,0 +1,27 @@
+{
+  "name": "one",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "engines": {
+    "node": "8.12.0"
+  }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./backend/index.js",
+    "lint": "eslint models/ routes/"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.15",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.0"
+  }
+}
