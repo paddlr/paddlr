@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 app.use('/users', userRoutes);
 app.use('/games', gameRoutes);
 app.use('/scores', scoreRoutes);
+app.use(morgan("dev"));
 
 app.use(function(err, req, res, next){
   // we send the error with an error message

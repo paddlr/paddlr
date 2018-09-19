@@ -10,7 +10,7 @@ router.get("/", function(req, res){
 });
 
 router.post("/", function(req, res,next){
-  Games.create(req.body).then(function(Games){
+  Games.create(JSON.parse(req.body)).then(function(Games){
     res.send(Games);
   })
   .catch(next)
