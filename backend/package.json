@@ -1,14 +1,18 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "",
+  "description": "ping pong brilliance",
   "main": "index.js",
+  "engines": {
+    "node": "8.12.0"
+  },
   
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon ./backend/index.js",
     "lint": "eslint models/ routes/"
   },
+
   "author": "",
   "license": "ISC",
   "dependencies": {
@@ -19,6 +23,7 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4"
   },
+
   "devDependencies": {
     "eslint": "^5.6.0"
   }
