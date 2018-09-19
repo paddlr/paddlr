@@ -2,7 +2,7 @@
 
 
 ## Project Overview:
-As this was our final project at Maker's Academy, we decided to pay tribute to it's table-tennis culture by creating an application dedicated to the art. The application will link to user's slack accounts, where games can be arranged, ranking systems 
+As this was our final project at Maker's Academy, we decided to pay tribute to it's table-tennis culture by creating an application dedicated to the art. The application will link to user's slack accounts, where games can be arranged, players can be ranked and tournaments can be generated.
 
 ## Day 1: Wireframe using Adobe XD
 ![](https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537202882/paddlr-mockup_quiz5s.png)
@@ -30,6 +30,11 @@ As this was our final project at Maker's Academy, we decided to pay tribute to i
 (To be added)
 
 ## Development Process
+#### MVP
+* Build a single page app in React where user's can have their points counted for a single game of table-tennis.
+* Points for each plater are counted by clicking a score button underneath the player's profile picture until a winner has been determined.
+* Have an API that's fully-documented and validated that has game and user roots
+
 (To be added)
 
 ### Testing and Code Quality Backend
@@ -114,4 +119,7 @@ Our group had been drawn together based on our mutual interest of developing an 
 ### Day 2
 Back-End thoughts: Having decided it would be cool to build our app using a commonly featured stack of MongoDB, Node and Express (with React for the Front-End), we quickly began to question our choice of a noSQL database.  Managing relationships is proving weird and ever so slightly unsatisfactory but we are not quitters! Despite having some concerns about scalability and the ability to handle a growing store of ping pong related stats we are pushing on, devouring Udemey video after Youtube video attempting to grasp the non-relational behaviour.
 
+Front-End thoughts: Further research was done on React, wireframe replica was built in an html file, logic for table tennis game was built in javascript.
 
+### Day 3
+Front-End thoughts: We translated the html document into react, broke it down into components, and applied logic so that a single game could be played and a winner determiend.
