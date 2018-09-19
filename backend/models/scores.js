@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var Scoresschema = new Schema({
-  
+
   score:{
     type: Number,
     required:[true, 'Score field is required']
@@ -12,11 +12,14 @@ var Scoresschema = new Schema({
   win:{
     type: Boolean,
     default: false
+  },
+
+  player_id:{
   }
 
 });
 
 const Scores = mongoose.model('scores', Scoresschema)
 
-
-module.exports = Scores;
+exports.Scoresschema = Scoresschema;
+// module.exports = Scores;

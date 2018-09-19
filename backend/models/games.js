@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const {Scoresschema} = require("../models/scores")
 const Schema = mongoose.Schema;
 
 var Gamesschema = new Schema({
@@ -14,14 +14,12 @@ var Gamesschema = new Schema({
   },
 
   score: {
-    type: String,
-    ref: 'Scores',
+    type: Scoresschema,
     required: false
   }
 
 });
 
 const Games = mongoose.model('games', Gamesschema)
-
 
 module.exports = Games;

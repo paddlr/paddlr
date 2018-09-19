@@ -35,12 +35,14 @@ const Users = mongoose.model('users', Usersschema)
 //         });
 //     });
 // });
-
+//
 // Usersschema.methods.comparePassCode = function(candidatePassword, cb) {
 //     bcrypt.compare(candidatePassword, this.passcode, function(err, isMatch) {
 //         if (err) return cb(err);
 //         cb(null, isMatch);
 //     });
 // };
+
+var hello;
 
 module.exports = Users;
