@@ -16,10 +16,6 @@ router.post("/", function(req, res,next){
   .catch(next)
 });
 
-router.put("/:id", function(req, res){
-  res.send({type: 'PUT'});
-});
-
 router.delete("/:id", function(req, res){
   Games.findOneAndDelete({_id: req.params.id}).then(function(Games){
     res.send(Games);
