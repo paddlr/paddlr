@@ -162,6 +162,20 @@ ul,
   font-size: 1.2em;
 }
 
+.paddle-pic-right {
+  position: absolute;
+  top: 50%;
+  left: 70%;
+}
+
+.paddle-pic-left {
+  position: absolute;
+  top: 50%;
+  right: 70%;
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+}
+
 @media only screen and (max-width: 1480px) {
   .menu-items {
     font-size: 30px;
