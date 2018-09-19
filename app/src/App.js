@@ -1,44 +1,12 @@
 import React, { Component } from "react";
 import "./App.css";
+import Navbar from './Navbar';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <section>
-          <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div className="collapse navbar-collapse" id="navbar-collapse">
-              <ul className="nav navbar-nav navbar-right">
-                <button type="button" className="paddle-button">
-                  <img
-                    className="paddle-logo"
-                    src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"
-                  />
-                </button>
-                <div className="menu-items">
-                  <li>
-                    <a className="menu-item">PLAY</a>
-                  </li>
-                  <li>
-                    <a className="menu-item">TOURNAMENTS</a>
-                  </li>
-                  <li>
-                    <a className="menu-item">LEADERBOARDS</a>
-                  </li>
-                  <li>
-                    <a className="menu-item">LOGOUT</a>
-                  </li>
-                </div>
-                <button type="button" className="profile-button">
-                  <img
-                    className="profile-pic"
-                    src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537268860/angela-profile-image_cyhzx7.jpg"
-                  />
-                </button>
-              </ul>
-            </div>
-          </nav>
-        </section>
+        <Navbar/>
         <section>
           <div className="left">
             <h2 className="games-won-left">1</h2>
@@ -72,7 +40,7 @@ class App extends Component {
           </div>
         </section>
       </div>
-    );
+    )
   }
 }
 
