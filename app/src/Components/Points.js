@@ -3,8 +3,6 @@ import React, { Component } from "react";
 class Points extends Component {
   constructor() {
     super(); //use super(props) if you want to access this.props in constructor
-
-    // this.state = {}
   }
 
   render() {
