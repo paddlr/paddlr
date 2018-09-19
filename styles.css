@@ -6,7 +6,6 @@
   -webkit-box-sizing: border-box;
 }
 
-
 html,
 body {
   width: 100%;
@@ -28,7 +27,7 @@ body {
   display: inline-flex;
   list-style: none;
   font-family: "Open Sans", sans-serif;
-  font-size: 3em;
+  font-size: 2.5em;
   font-weight: 300;
   margin: 0;
   padding: 0;
@@ -38,14 +37,14 @@ body {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0 20%;
-  padding: 1% 25%;
-  width: 100%;
+  margin: 0 40%;
+  /* padding: 3%; */
+  width: 50%;
 }
 
 li {
-  padding: 10px 30px;
-  margin-top: 25px;
+  padding: 5%;
+  /* margin-top: 50%; */
 }
 
 a,
@@ -55,12 +54,10 @@ ul,
   text-decoration: none;
 }
 
-
-
 .paddle-logo {
   border-color: #cb4345;
   float: left;
-  width: 150px;
+  width: 10em;
 }
 
 .paddle-button {
@@ -70,13 +67,15 @@ ul,
 
 .profile-pic {
   border-radius: 50%;
-  width: 130px;
+  width: 10em;
 }
 
 .profile-button {
   background-color: #cb4345;
   border-color: #cb4345;
-  padding: 10px 2px 5px 60px;
+  display: flex;
+  justify-content: flex-end;
+  padding: 1% 10% 1% 0;
 }
 
 .left {
@@ -96,43 +95,40 @@ ul,
   font-family: "Play", sans-serif;
   font-size: 60px;
   position: absolute;
-  color: #cb4345; 
+  color: #cb4345;
   top: 0;
   right: 20px;
 }
-
-
 
 .games-won-right {
   font-family: "Play", sans-serif;
   font-size: 60px;
   position: absolute;
-  color: #cb4345; 
+  color: #cb4345;
   top: 0;
   left: 20px;
 }
 
-.score-left{
+.score-left {
   font-family: "Play", sans-serif;
   font-size: 60px;
   position: absolute;
-  color: #4C4C4C;
+  color: #4c4c4c;
   top: 0;
   right: 25px;
-  padding-top: 20%; 
-  font-size: 8em; 
-
+  padding-top: 20%;
+  font-size: 8em;
 }
 
-.score-right{
+.score-right {
   font-family: "Play", sans-serif;
   font-size: 60px;
   position: absolute;
-  color: #4C4C4C;
+  color: #4c4c4c;
   top: 0;
   left: 25px;
-  padding-top: 20%; 
-  font-size: 8em; 
+  padding-top: 20%;
+  font-size: 8em;
 }
 
 .player-button {
@@ -141,13 +137,21 @@ ul,
   padding: 25%;
 }
 
+.profile-button:focus,
+.paddle-button:focus,
+.player-button:active,
+.player-button:checked,
+.player-button:focus {
+  outline: none !important;
+}
+
 .player-pic {
   border-radius: 50%;
   width: 80%;
 }
 
 .score_button {
-  background-color: #4CAF50; /* Green */
+  background-color: #4caf50; /* Green */
   border: none;
   color: white;
   padding: 4% 14%;
@@ -155,5 +159,17 @@ ul,
   position: absolute;
   top: 75%;
   right: 32%;
-  font-size: 1.2em; 
+  font-size: 1.2em;
+}
+
+@media only screen and (max-width: 1480px) {
+  .menu-items {
+    font-size: 30px;
+    margin: 2.5% 20% 2% 15%;
+    padding: 0 14% 0 12%;
+    width: 60%;
+  }
+  .profile-button {
+    padding-left: 4%;
+  }
 }
