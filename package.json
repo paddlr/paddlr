@@ -1,0 +1,13 @@
+{
+  "name": "paddlr",
+  "version": "1.0.0",
+  "description": "ping pong brilliance",
+  "main": "backend/index.js",
+  "engines": {
+    "node": "8.12.0"
+  },
+
+  "scripts": {
+    "start": "node backend/index.js"
+  }
+}
