@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Navbar from './Navbar';
+import PlayerPic from './PlayerPic';
 
 class App extends Component {
   render() {
@@ -10,12 +11,7 @@ class App extends Component {
         <section>
           <div className="left">
             <h2 className="games-won-left">1</h2>
-            <button className="player-button">
-              <img
-                className="player-pic"
-                src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537275284/EdT_jg1gfi.jpg"
-              />
-            </button>
+            <PlayerPic/>
             <h1 className="score-left"> 8</h1>
             <img
               className="paddle-pic-left"
@@ -25,12 +21,7 @@ class App extends Component {
           </div>
           <div className="right">
             <h2 className="games-won-right">1</h2>
-            <button className="player-button">
-              <img
-                className="player-pic"
-                src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537275292/Tim_r7gqrq.png"
-              />
-            </button>
+            <PlayerPic/>
             <h1 className="score-right">15</h1>
             <img
               className="paddle-pic-right"
