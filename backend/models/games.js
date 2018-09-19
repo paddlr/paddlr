@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const {Scoresschema} = require("../models/scores")
+const {PlayersSchema} = require("./players")
 const Schema = mongoose.Schema;
 
 var Gamesschema = new Schema({
@@ -13,11 +13,7 @@ var Gamesschema = new Schema({
     default: new Date()
   },
 
-  score: {
-    type: Scoresschema,
-    required: false
-  }
-
+  players: [PlayersSchema, PlayersSchema]
 
 });
 
