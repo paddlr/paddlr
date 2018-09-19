@@ -11,8 +11,8 @@ mongoose.connect("mongodb://steph:cheese1@ds161102.mlab.com:61102/steph",  { use
 mongoose.Promise = global.Promise;
 
 app.use(bodyParser.json());
-app.use('api/users', userRoutes);
-app.use('api/games', gameRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/games', gameRoutes);
 app.use(morgan("dev"));
 
 app.use(function(err, req, res, next){
