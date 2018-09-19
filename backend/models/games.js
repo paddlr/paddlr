@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 var Gamesschema = new Schema({
   game_type:{
     type: String,
-    required:[true, 'Game type field is required']
+    default: "friendly"
   },
 
   game_created_at:{
