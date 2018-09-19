@@ -32,6 +32,9 @@ As this was our final project at Maker's Academy, we decided to pay tribute to i
 ## Development Process
 (To be added)
 
+### Testing and Code Quality Backend
+- Eslint. Run `npm lint` to run through the model and view components.  
+
 ## Objectives
 In a meeting before we had settled on the details we discussed what we wanted to get out of the project:
 * Build a web app that could leave a legacy at Maker's
