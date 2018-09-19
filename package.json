@@ -8,6 +8,7 @@
   },
 
   "scripts": {
-    "start": "node backend/index.js"
+    "start": "node backend/index.js",
+    "postinstall": "npm install --prefix backend && npm install --prefix frontend"
   }
 }
