@@ -10,10 +10,10 @@ app/node_modules
 /app/node_modules
 
 # testing
-app/coverage
+frontend/coverage
 
 # production
-app/build
+frontend/build
 
 # misc
 .DS_Store
