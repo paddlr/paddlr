@@ -110,3 +110,8 @@ I would like to choose if a match is friendly or competitve
 
 #### Day 1
 Our group had been drawn together based on our mutual interest of developing an application based on games. Having been keen table tennis players during our time at Maker's and occassionaly having disputes about who's serve is who's or what the score was we decided to build an application which could enhance our experience positively. We could see a lot of room for added complexity beyond the fairly basic MVP, so were keen to create a full stack web app. Once we had decided on our MVP, we split up to do the inital administration such as the README, Trello etc., build the wireframe for the MVP using Adobe XD and research which database would be best to use with react.
+
+### Day 2
+Back-End thoughts: Having decided it would be cool to build our app using a commonly featured stack of MongoDB, Node and Express (with React for the Front-End), we quickly began to question our choice of a noSQL database.  Managing relationships is proving weird and ever so slightly unsatisfactory but we are not quitters! Despite having some concerns about scalability and the ability to handle a growing store of ping pong related stats we are pushing on, devouring Udemey video after Youtube video attempting to grasp the non-relational behaviour.
+
+
