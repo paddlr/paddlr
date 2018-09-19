@@ -20,6 +20,6 @@ app.use(function(err, req, res, next){
   res.status(422).send({error: err.message});
 });
 
-app.listen(process.env.post || 4000, function(){
+app.listen(process.env.PORT || 4000, function(){
   console.log("now listening for requests");
 })
