@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "../App.css";
 import Navbar from './Navbar';
-import ProfilePic from './ProfilePic';
+import PlayerPic from './PlayerPic';
 import Points from './Points'
 import Paddle from './Paddle'
 import ScoreButton from './ScoreButton'
@@ -13,17 +13,17 @@ class App extends Component {
         <Navbar/>
         <section>
           <div className="left">
-            <ProfilePic/>
+            <PlayerPic/>
             <Points/>
             <Paddle direction = 'paddle-pic-left'/>
-           
+
           </div>
           <div className="right">
           <Points player = 'player 1'/>
-            <ProfilePic/>
+            <PlayerPic/>
             <Paddle direction = 'paddle-pic-right'/>
 
-           
+
           </div>
         </section>
       </div>

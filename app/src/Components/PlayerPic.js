@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-class ProfilePic extends Component {
+class PlayerPic extends Component {
   constructor() {
     super();    //use super(props) if you want to access this.props in constructor
 
@@ -21,4 +21,4 @@ class ProfilePic extends Component {
   }
 };
 
-export default ProfilePic;
+export default PlayerPic;
