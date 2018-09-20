@@ -9,7 +9,13 @@ router.get("/", function(req, res){
   })
 });
 
-router.post("/", function(req, res,next){
+router.get("/:id", function(req, res, next){
+  Users.findById({_id: req.params.id}).then(function(selectedUser){
+    res.send(selectedUser);
+  })
+});
+
+router.post("/", function(req, res, next){
   Users.create(req.body).then(function(Users){
     res.send(Users);
   })

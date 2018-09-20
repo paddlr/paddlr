@@ -1,8 +1,14 @@
 {
   "name": "paddlr",
-  "description": "ping pong brilliance",
   "version": "1.0.0",
+  "description": "ping pong brilliance",
+  "main": "backend/index.js",
   "engines": {
     "node": "8.12.0"
+  },
+
+  "scripts": {
+    "start": "node backend/index.js",
+    "postinstall": "npm install --prefix backend && npm install --prefix frontend"
   }
 }
