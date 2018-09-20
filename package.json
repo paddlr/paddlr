@@ -9,6 +9,7 @@
 
   "scripts": {
     "start": "node backend/index.js",
-    "postinstall": "npm install --prefix backend && npm install --prefix frontend"
+    "postinstall": "npm install --prefix backend && npm install --prefix frontend",
+    "heroku-postbuild": "cd frontend && npm run build & npm start"
   }
 }
