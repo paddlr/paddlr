@@ -60,42 +60,6 @@ describe('API Games routes', function(){
          });
      });
 
-     it('can save multiple games (send multiple requests)', function(){
-       request.post('/api/games')
-          .send({
-           "game_type": "friendly",
-           "players": [
-               {
-                   "player_score": 199999999
-               },
-               {
-                   "player_score": 222222
-               }
-           ]
-       })
-          .expect(200)
-          .end(function(err, res) {
-              done(err);
-          });
-
-        request.post('/api/games')
-           .send({
-            "game_type": "friendly",
-            "players": [
-                {
-                    "player_score": 21
-                },
-                {
-                    "player_score": 2
-                }
-            ]
-        })
-           .expect(200)
-           .end(function(err, res) {
-               done(err);
-           });
-   })
-
      it('does not save an invalid game', function(done) {
        request.post('/api/games')
           .send({
@@ -142,7 +106,7 @@ describe('DELETE api/games', function(){
 
 
   it('cannot removes a game that does not exist', function(){
-    request.delete('/api/icecreamtruck')
+    request.delete('/api/games/icecreamtruck')
       .expect(401);
         })
   });
