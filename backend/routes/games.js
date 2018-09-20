@@ -16,6 +16,14 @@ router.post("/", function(req, res,next){
   .catch(next)
 });
 
+
+router.get("/:id", function(req, res, next){
+  Games.findById({_id: req.params.id}).then(function(selectedGame){
+    res.send(selectedGame);
+  })
+});
+
+
 router.delete("/:id", function(req, res){
   Games.findOneAndDelete({_id: req.params.id}).then(function(Games){
     res.send(Games);
