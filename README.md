@@ -39,6 +39,10 @@ As this was our final project at Maker's Academy, we decided to pay tribute to i
 
 ### Testing and Code Quality Backend
 - Eslint. Run `npm lint` to run through the model and view components.  
+- Istanbul. To test coverage.
+- Mocha is our test runner
+- Chai is our BDD/TDD assertion library
+
 
 ## Objectives
 In a meeting before we had settled on the details we discussed what we wanted to get out of the project:
