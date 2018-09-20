@@ -11,7 +11,6 @@ This section should contain an overview of the data provided and the API purpose
 
 The current version of the API lives at https://paddlr.herokuapp.com/api/
 
-=======
 | HTTP METHOD | Endpoint | What it does |
 |-------------|----------|--------------|
 | GET | /api/users | Returns an array of all Users based on query parameters |
