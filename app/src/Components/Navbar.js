@@ -1,22 +1,17 @@
 import React, { Component } from "react";
 
 class Navbar extends Component {
-  constructor() {
-    super();    //use super(props) if you want to access this.props in constructor
-
-    // this.state = {}
-  }
-
   render() {
     return (
       <div>
-        <nav className="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="collapse navbar-collapse" id="navbar-collapse">
             <ul className="nav navbar-nav navbar-right">
               <button type="button" className="paddle-button">
                 <img
                   className="paddle-logo"
                   src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"
+                  alt="app logo"
                 />
               </button>
               <div className="menu-items">
@@ -37,14 +32,15 @@ class Navbar extends Component {
                 <img
                   className="profile-pic"
                   src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537268860/angela-profile-image_cyhzx7.jpg"
+                  alt="profile pic"
                 />
               </button>
             </ul>
           </div>
         </nav>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Navbar;

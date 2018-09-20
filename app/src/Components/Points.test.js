@@ -1,9 +1,10 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Points from './Points';
+import React from "react";
+import { shallow } from "enzyme";
+import Points from "./Points";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<Points />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("Points", () => {
+  let points = shallow(<Points />);
+  it("renders the current points", () => {
+    expect(points.find("h1").text()).toEqual(" 8");
+  });
 });

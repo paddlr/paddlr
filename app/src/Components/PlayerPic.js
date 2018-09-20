@@ -1,12 +1,6 @@
 import React, { Component } from "react";
 
 class PlayerPic extends Component {
-  constructor() {
-    super();    //use super(props) if you want to access this.props in constructor
-
-    // this.state = {}
-  }
-
   render() {
     return (
       <div>
@@ -14,11 +8,12 @@ class PlayerPic extends Component {
           <img
             className="player-pic"
             src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537275284/EdT_jg1gfi.jpg"
+            alt="player one"
           />
         </button>
       </div>
-    )
+    );
   }
-};
+}
 
 export default PlayerPic;

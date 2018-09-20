@@ -1,9 +1,11 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import PlayerPic from './PlayerPic';
+import React from "react";
+import { shallow } from "enzyme";
+import PlayerPic from "./PlayerPic";
 
-it('renders without crashing', () => {
-  const div = document.createElement('div');
-  ReactDOM.render(<PlayerPic />, div);
-  ReactDOM.unmountComponentAtNode(div);
+describe("PlayerPic", () => {
+  let playerPic = shallow(<PlayerPic />);
+
+  it("renders the player pic", () => {
+    expect(playerPic.find(".player-pic").exists()).toBe(true);
+  });
 });

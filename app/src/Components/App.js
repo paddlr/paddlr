@@ -10,9 +10,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar/>
+        <Navbar />
         <section>
           <div className="left">
+
             <PlayerPic/>
             <Points/>
             <Paddle direction = 'paddle-pic-left'/>
@@ -23,11 +24,10 @@ class App extends Component {
             <PlayerPic/>
             <Paddle direction = 'paddle-pic-right'/>
 
-
           </div>
         </section>
       </div>
-    )
+    );
   }
 }
 
