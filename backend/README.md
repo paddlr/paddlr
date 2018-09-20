@@ -38,10 +38,10 @@ An example of an API Call to find 'all users' but containing one user
 
 | Field name | Description | Data type |
 |------------|-------------|-----------|
-| game._id | Unique identifier for one game | ID |
+| game._id | Unique identifier for one game | Id |
 | game_type | Type of game (Competitive, friendly, etc...) | String |
 |  game_created_at | The time game was played  | Date  |
-|  player_id | The Unique identifier for a Player| ID  |
+|  player_id | The Unique identifier for a Player| Id  |
 |  player_score | The player's score | Number |
 |  username | The username of a (Slack) user  | String |
 | passcode | An individual user's passcode for playing a match| String |
