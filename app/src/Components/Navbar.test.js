@@ -1,9 +1,13 @@
 import React from "react";
-import { mount } from "enzyme";
+import { shallow } from "enzyme";
 import Navbar from "./Navbar";
 
 describe("Navbar", () => {
-  let navbar = mount(<Navbar />);
+  let navbar = shallow(<Navbar />);
+  it("renders the paddlr logo", () => {
+    expect(navbar.find(".paddle-logo").exists()).toBe(true);
+    expect(navbar.find(".paddle-button").exists()).toBe(true);
+  });
   it("renders the PLAY link", () => {
     expect(
       navbar

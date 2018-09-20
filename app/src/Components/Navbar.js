@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Navbar extends Component {
   constructor() {
-    super();    //use super(props) if you want to access this.props in constructor
+    super(); //use super(props) if you want to access this.props in constructor
 
     // this.state = {}
   }
@@ -17,6 +17,7 @@ class Navbar extends Component {
                 <img
                   className="paddle-logo"
                   src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"
+                  alt="app logo"
                 />
               </button>
               <div className="menu-items">
@@ -37,14 +38,15 @@ class Navbar extends Component {
                 <img
                   className="profile-pic"
                   src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537268860/angela-profile-image_cyhzx7.jpg"
+                  alt="profile pic"
                 />
               </button>
             </ul>
           </div>
         </nav>
       </div>
-    )
+    );
   }
-};
+}
 
 export default Navbar;
