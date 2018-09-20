@@ -11,7 +11,7 @@ class Points extends Component {
       <div>
         <h1 className="score-left">{this.state.points}</h1>
 
-        <button className = "score_button" onClick = {() => this.setState({points: this.state.points +1} )}>SCORE</button>
+        <button className = "score_button" onClick = {() => this.setState({points: this.state.points +1} )}> score </button>
       </div>
     );
   }

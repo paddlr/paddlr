@@ -19,7 +19,7 @@ class App extends Component {
            
           </div>
           <div className="right">
-          <Points/>
+          <Points player = 'player 1'/>
             <ProfilePic/>
             <Paddle direction = 'paddle-pic-right'/>
 
