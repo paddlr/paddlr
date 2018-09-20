@@ -15,9 +15,11 @@ The current version of the API lives at https://paddlr.herokuapp.com/api/
 |-------------|----------|--------------|
 | GET | /api/users | Returns an array of all Users based on query parameters |
 | POST | /api/users | Returns an array of POSTED Users based on query parameters. User is then added to the current list of Users |
+| GET | /api/users/{id}| Returns a USER based on selected id |
 | DELETE | /api/users/{id} | Returns an array of deleted user based on unique identifier. User is then deleted from the list of users |
 | GET | /api/games | Returns an array of all Games based on query parameters |
 | POST | /api/games | Returns an array of POSTED game. Game is then added to the current list of games|
+| GET | /api/games/{id}| Returns a GAME based on selected id |
 | DELETE | /api/games/{id} | Returns an array of the deleted game based on unique identifier. Game is then deleted from the list of games |
 
 ## API calls
