@@ -1,15 +1,17 @@
 import React, { Component } from "react";
 
 class Points extends Component {
-  constructor() {
+  constructor(props) {
     super(props);
-    this.state = {}
+    this.state = { points: 0 }
   }
 
   render() {
     return (
       <div>
-        <h1 className="score-left">7</h1>
+        <h1 className="score-left">{this.state.points}</h1>
+
+        <button className = "score_button" onClick = {() => this.setState({points: this.state.points +1} )}>SCORE</button>
       </div>
     );
   }
