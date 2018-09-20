@@ -3,6 +3,7 @@ import "../App.css";
 import Navbar from './Navbar';
 import ProfilePic from './ProfilePic';
 import Points from './Points'
+import Paddle from './Paddle'
 import ScoreButton from './ScoreButton'
 
 class App extends Component {
@@ -14,18 +15,14 @@ class App extends Component {
           <div className="left">
             <ProfilePic/>
             <Points/>
-            <img
-              className="paddle-pic-left"
-              src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537289738/Screen_Shot_2018-09-17_at_16.26.32_atdrl5.png"
-            />
+            <Paddle direction = 'paddle-pic-left'/>
+           
           </div>
           <div className="right">
           <Points/>
             <ProfilePic/>
-            {/* <img
-              className="paddle-pic-right"
-              src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537289738/Screen_Shot_2018-09-17_at_16.26.32_atdrl5.png"
-            /> */}
+            <Paddle direction = 'paddle-pic-right'/>
+
            
           </div>
         </section>
