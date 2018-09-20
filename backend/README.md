@@ -13,7 +13,6 @@ The current version of the API lives at https://paddlr.herokuapp.com/api/
 
 | HTTP METHOD | Endpoint | What it does |
 |-------------|----------|--------------|
-
 | GET | /api/users | Returns an array of all Users based on query parameters |
 | POST | /api/users | Returns an array of POSTED Users based on query parameters. User is then added to the current list of Users |
 | DELETE | /api/users/{id} | Returns an array of deleted user based on unique identifier. User is then deleted from the list of users |
