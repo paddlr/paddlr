@@ -125,3 +125,7 @@ Front-End thoughts: Further research was done on React, wireframe replica was bu
 Front-End thoughts: We translated the html document into react, broke it down into components, and applied logic so that a single game could be played and a winner determiend.
 
 Back-end: The morning was spent twisting our heads around the complexity of db structures and embedding documents. We had a breakthrough at midday where we simplified our design and were able to push forward and get a Users and Games api hosted by the afternoon. We had heroku hosting issues to resolve in the evening - having combined backend and frontend solutions into one repo, which had multiple paskage.json files and had to experiment to find the "correct" implementation. In the end we felt it best to have a root package.json file (as well as one in the b and f folders) which provided the relevant instruction to heroku for starting the server and loading all dependancies.
+
+### Day 4
+Back-End: It may be a tiny bit arse about face, but we have started writing our tests now and Steph is knocking them out like a crazed TDD'er. 
+I am pondering on our Heroku deployment which is succesfully displaying our api but steadfastly refusing to show the beautiful designs created by our frontend team. It is slowly dawning on me that we will need two servers running if we want to host on the same domain.
