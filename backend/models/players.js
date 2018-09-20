@@ -10,6 +10,7 @@ var PlayersSchema = new Schema({
 
   player_score:{
     type: Number,
+    min: 0,
     required:[true, 'Score field is required']
   }
 
