@@ -3,23 +3,24 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var Usersschema = new Schema({
-  username:{
+
+  name:{
     type: String,
     required:[true, 'Name field is required']
   },
 
-  passcode:{
+  slack_id:{
     type: String,
-    required:[true, 'Passcode is required']
+    unique: true,
+    required:[true, 'Slack_id field is required']
   },
 
-  user_created_at:{
-    type: Date,
-    default: new Date()
+  slack_image:{
+    type:String,
+    required:[true, 'Slack_id field is required']
   }
 
 });
 
 const Users = mongoose.model('users', Usersschema)
-
 module.exports = Users;
