@@ -16,13 +16,12 @@ class App extends Component {
 
             <PlayerPic/>
             <Points/>
-            <Paddle direction = 'paddle-pic-left'/>
 
           </div>
           <div className="right">
           <Points player = 'player 1'/>
             <PlayerPic/>
-            <Paddle direction = 'paddle-pic-right'/>
+            {/* <Paddle direction = 'paddle-pic-right'/> */}
 
           </div>
         </section>
