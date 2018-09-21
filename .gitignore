@@ -2,7 +2,8 @@
 
 
 backend/node_modules
-
+backend/.env
+backend/.env.test
 
 # dependencies
 
@@ -19,7 +20,8 @@ frontend/build
 .DS_Store
 .env.local
 .env.development.local
-.env.test.local
+.env.test
+.env
 .env.production.local
 
 npm-debug.log*

@@ -6,10 +6,12 @@
   "engines": {
     "node": "8.12.0"
   },
-
   "scripts": {
     "start": "node backend/index.js",
     "postinstall": "npm install --prefix backend && npm install --prefix frontend",
     "heroku-postbuild": "cd frontend && npm run build & npm start"
+  },
+  "dependencies": {
+    "node-fetch": "^2.2.0"
   }
 }
