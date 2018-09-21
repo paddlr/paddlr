@@ -7,6 +7,7 @@ const gameRoutes = require('./routes/games');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const morgan = require("morgan");
+const fetch = require("node-fetch");
 
 const path = require('path')
 const app = express();
