@@ -1,32 +1,13 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
+const SlackUsers = require("../models/SlackUsers")
 const fetch = require("node-fetch");
-const Url = "https://slack.com/api/users.list";
-
-const options = {
-  method: 'GET',
-  headers: {
-    'Authorization': 'Bearer ' + process.env.TOKEN,
-    'Content-type': 'application/json'
-  }
-};
+var slackUser = new SlackUsers();
 
 router.get("/slack", function(req, res){
-  fetch(Url, options)
-    .then(function(data){
-      return data.json();
-    })
-    .then(function(response){
-      res.send(response);
-      console.log(response);
-    })
-    .catch(function(err){
-      console.log(err);
-    })
-  })
-
-
+  slackUser.getUsers(res);
+})
 
 
 router.get("/", function(req, res){
