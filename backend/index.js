@@ -11,7 +11,7 @@ const morgan = require("morgan");
 const path = require('path')
 const app = express();
 
-mongoose.connect(process.env.DB,  { useNewUrlParser: true });
+mongoose.connect("mongodb://steph:cheese1@ds161102.mlab.com:61102/steph",  { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 
 // API calls
