@@ -12,17 +12,27 @@ class Game extends Component {
 
     return (
       <div>
-        <Player
-          points={player1Points}
-          onScoreIncremented={() => this.setState({ player1Points: player1Points + 1 })}
-        />
-        <Player
-          points={player2Points}
-          onScoreIncremented={() => this.setState({ player2Points: player2Points + 1 })}
-        />
+        <div className="left">
+          <Player
+            points={player1Points}
+            onScoreIncremented={() =>
+              this.setState({ player1Points: player1Points + 1 })}/>
+        </div>
+        <div className="right">
+          <Player
+            points={player2Points}
+            onScoreIncremented={() =>
+              this.setState({ player2Points: player2Points + 1 })
+            }
+          />
+        </div>
       </div>
     );
   }
 }
 
 export default Game;
+
+
+  /* <Paddle direction = 'paddle-pic-right'/> */
+

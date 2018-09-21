@@ -1,30 +1,15 @@
 import React, { Component } from "react";
 import "../App.css";
 import Navbar from './Navbar';
-import PlayerPic from './PlayerPic';
-import Points from './Points'
-import Paddle from './Paddle'
-
+import Game from './Game'; 
 class App extends Component {
   render() {
     return (
       <div>
         <Navbar />
-        <section>
-          <div className="left">
-
-            <PlayerPic/>
-            <Points/>
+        <Game/>
 
           </div>
-          <div className="right">
-          <Points player = 'player 1'/>
-            <PlayerPic/>
-            {/* <Paddle direction = 'paddle-pic-right'/> */}
-
-          </div>
-        </section>
-      </div>
     );
   }
 }

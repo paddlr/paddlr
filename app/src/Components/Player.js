@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ScoreButton from "./ScoreButton";
 import Points from "./Points";
 import PlayerPic from "./PlayerPic";
 
