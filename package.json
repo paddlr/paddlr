@@ -6,10 +6,15 @@
   "engines": {
     "node": "8.12.0"
   },
-
   "scripts": {
-    "start": "node backend/index.js",
-    "postinstall": "npm install --prefix backend && npm install --prefix frontend",
-    "heroku-postbuild": "cd frontend && npm run build & npm start"
+    "client": "cd frontend && npm start",
+    "server": "nodemon backend/index.js",
+    "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
+    "dev:server": "cd frontend && npm build && cd ../backend && npm start",
+    "start": "node index.js",
+    "heroku-postbuild": "cd frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "dependencies": {
+    "concurrently": "^4.0.1"
   }
 }
