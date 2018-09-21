@@ -1,13 +1,8 @@
 
-
-
 backend/node_modules
-
-
-# dependencies
-
 frontend/node_modules
-
+node_modules
+package-lock.json
 
 # testing
 frontend/coverage
