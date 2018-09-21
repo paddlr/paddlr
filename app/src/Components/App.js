@@ -4,7 +4,6 @@ import Navbar from './Navbar';
 import PlayerPic from './PlayerPic';
 import Points from './Points'
 import Paddle from './Paddle'
-import ScoreButton from './ScoreButton'
 
 class App extends Component {
   render() {
