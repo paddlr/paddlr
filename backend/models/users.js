@@ -10,6 +10,12 @@ var Usersschema = new Schema({
   },
 
   slack_id:{
+    type: String,
+    unique: true,
+    required:[true, 'Slack_id field is required']
+  },
+
+  slack_image:{
     type:String,
     required:[true, 'Slack_id field is required']
   }
@@ -17,5 +23,4 @@ var Usersschema = new Schema({
 });
 
 const Users = mongoose.model('users', Usersschema)
-
 module.exports = Users;

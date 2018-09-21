@@ -3,10 +3,12 @@ const router = express.Router();
 const Users = require('../models/users');
 const SlackUsers = require("../models/SlackUsers")
 const fetch = require("node-fetch");
+
 var slackUser = new SlackUsers();
 
 router.get("/slack", function(req, res){
-  slackUser.getUsers(res);
+  var data = slackUser.getUsers(res);
+  console.log(data);
 })
 
 
