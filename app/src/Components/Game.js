@@ -22,15 +22,16 @@ findWinner(p1 = this.state.player1Points, p2 = this.state.player2Points){
   render() {
     const { player1Points, player2Points } = this.state;
 
+    if(!this.state.winner){
+
+
     return (
-      <div>
+      
+       <div>
         <div className="left">
           <Player
             points={player1Points}
-            onScoreIncremented={() => this.setState({ player1Points: player1Points + 1 }, ()=> {this.findWinner()})}
-            showState
-
-          />
+            onScoreIncremented={() => this.setState({ player1Points: player1Points + 1 }, ()=> {this.findWinner()})}/>
         </div>
         <div className="right">
           <Player
@@ -42,7 +43,11 @@ findWinner(p1 = this.state.player1Points, p2 = this.state.player2Points){
 
 
 
-    );
+    );}
+
+    else return (<div>the game is over</div> )
+
+
   }
 }
 
