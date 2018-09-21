@@ -8,7 +8,7 @@
   },
   "scripts": {
     "client": "cd frontend && npm start",
-    "server": "nodemon backend/index.js",
+    "server": "node backend/index.js",
     "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
     "dev:server": "cd frontend && npm build && cd .. && npm start",
     "start": "node backend/index.js",
