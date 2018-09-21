@@ -45,7 +45,7 @@ findWinner(p1 = this.state.player1Points, p2 = this.state.player2Points){
 
     );}
 
-    else return (<div>the game is over</div> )
+    else return (<div> the winner is player {this.state.winner}</div> )
 
 
   }
