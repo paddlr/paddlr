@@ -2,7 +2,7 @@
 
 
 ## Project Overview:
-As this was our final project at Maker's Academy, we decided to pay tribute to it's table-tennis culture by creating an application dedicated to the art. The application will link to user's slack accounts, where games can be arranged, ranking systems 
+As this was our final project at Maker's Academy, we decided to pay tribute to its table-tennis culture by creating an application dedicated to the art. The application will link to user's slack accounts, where games can be arranged, players can be ranked and tournaments can be generated.
 
 ## Day 1: Wireframe using Adobe XD
 ![](https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537202882/paddlr-mockup_quiz5s.png)
@@ -30,10 +30,19 @@ As this was our final project at Maker's Academy, we decided to pay tribute to i
 (To be added)
 
 ## Development Process
+#### MVP
+* Build a single page app in React where user's can have their points counted for a single game of table-tennis.
+* Points for each plater are counted by clicking a score button underneath the player's profile picture until a winner has been determined.
+* Have an API that's fully-documented and validated that has game and user roots
+
 (To be added)
 
 ### Testing and Code Quality Backend
 - Eslint. Run `npm lint` to run through the model and view components.  
+- Istanbul. To test coverage.
+- Mocha is our test runner
+- Chai is our BDD/TDD assertion library
+
 
 ## Objectives
 In a meeting before we had settled on the details we discussed what we wanted to get out of the project:
@@ -112,6 +121,15 @@ I would like to choose if a match is friendly or competitve
 Our group had been drawn together based on our mutual interest of developing an application based on games. Having been keen table tennis players during our time at Maker's and occassionaly having disputes about who's serve is who's or what the score was we decided to build an application which could enhance our experience positively. We could see a lot of room for added complexity beyond the fairly basic MVP, so were keen to create a full stack web app. Once we had decided on our MVP, we split up to do the inital administration such as the README, Trello etc., build the wireframe for the MVP using Adobe XD and research which database would be best to use with react.
 
 ### Day 2
-Back-End thoughts: Having decided it would be cool to build our app using a commonly featured stack of MongoDB, Node and Express (with React for the Front-End), we quickly began to question our choice of a noSQL database.  Managing relationships is proving weird and ever so slightly unsatisfactory but we are not quitters! Despite having some concerns about scalability and the ability to handle a growing store of ping pong related stats we are pushing on, devouring Udemey video after Youtube video attempting to grasp the non-relational behaviour.
+Back-End thoughts: Having decided it would be cool to build our app using a commonly featured stack of MongoDB, Node and Express (with React for the Front-End), we quickly began to question our choice of a noSQL database.  Managing relationships is proving weird and ever so slightly unsatisfactory but we are not quitters! Despite having some concerns about scalability and the ability to handle a growing store of ping pong related stats we are pushing on, devouring Udemy video after Youtube video attempting to grasp the non-relational behaviour.
 
+Front-End thoughts: Further research was done on React, wireframe replica was built in an html file, logic for table tennis game was built in javascript.
 
+### Day 3
+Front-End thoughts: We translated the html document into react, broke it down into components, and applied logic so that a single game could be played and a winner determiend.
+
+Back-end: The morning was spent twisting our heads around the complexity of db structures and embedding documents. We had a breakthrough at midday where we simplified our design and were able to push forward and get a Users and Games api hosted by the afternoon. We had heroku hosting issues to resolve in the evening - having combined backend and frontend solutions into one repo, which had multiple paskage.json files and had to experiment to find the "correct" implementation. In the end we felt it best to have a root package.json file (as well as one in the b and f folders) which provided the relevant instruction to heroku for starting the server and loading all dependancies.
+
+### Day 4
+Back-End: It may be a tiny bit arse about face, but we have started writing our tests now and Steph is knocking them out like a crazed TDD'er. 
+I am pondering on our Heroku deployment which is succesfully displaying our api but steadfastly refusing to show the beautiful designs created by our frontend team. It is slowly dawning on me that we will need two servers running if we want to host on the same domain.
