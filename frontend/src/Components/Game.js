@@ -14,7 +14,8 @@ class Game extends Component {
       player2Points: 0,
       winner: null,
       toServe: 0,
-      //player1Pic: ''
+      player1pic: 'https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537275284/EdT_jg1gfi.jpg',
+      player2pic: 'https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537268860/angela-profile-image_cyhzx7.jpg'
     };
   }
 
@@ -57,17 +58,17 @@ class Game extends Component {
     }
   }
   render() {
-    const { player1Points, player2Points, toServe } = this.state;
+    const { player1Points, player2Points, toServe, player1pic, player2pic } = this.state;
 
     if (!this.state.winner) {
       return (
         <div>
           <div className="left">
-            <Player toServe={toServe} points={player1Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_1)} />
+            <Player toServe={toServe} pic =  {player1pic} points={player1Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_1)} />
             {toServe === PLAYER_1 ? <Paddle direction="paddle-pic-left" /> : null}
           </div>
           <div className="right">
-            <Player toServe={toServe} points={player2Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_2)} />
+            <Player toServe={toServe} pic = {player2pic} points={player2Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_2)} />
 
             {toServe === PLAYER_2 ? <Paddle direction="paddle-pic-right" /> : null}
           </div>
