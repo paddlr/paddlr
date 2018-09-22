@@ -79,8 +79,8 @@ class Game extends Component {
      
     <div>  
 
-    the winner is player {this.state.winner}
-    <img src = {this.state.winner === 1 ? player1pic : player2pic}  />
+    <h1 className = "winner_header"> The winner is player {this.state.winner}! </h1>
+    <img src = {this.state.winner === 1 ? player1pic : player2pic} className = "winner_pic"  />
  
     
     

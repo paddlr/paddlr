@@ -175,6 +175,25 @@ ul,
   transform: scaleX(-1);
 }
 
+.winner_pic {
+  border-radius: 50%;
+  width: 28%;
+  border-style: groove;
+  border-color: gold;
+  border-width: 25px;
+  display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.winner_header{
+  padding-left: 40%; 
+    margin-left: auto;
+    margin-right: auto;
+    color: goldenrod; 
+
+}
+
 @media only screen and (max-width: 1480px) {
   .menu-items {
     font-size: 30px;
