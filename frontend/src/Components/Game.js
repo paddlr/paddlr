@@ -80,8 +80,8 @@ class Game extends Component {
     <div>  
 
     the winner is player {this.state.winner}
-    <PlayerPic pic = {this.state.winner === 1 ? player1pic : player2pic}  />
- } 
+    <img src = {this.state.winner === 1 ? player1pic : player2pic}  />
+ 
     
     
     {console.log(this.state)}
