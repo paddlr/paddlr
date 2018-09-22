@@ -4,6 +4,7 @@ require('dotenv-flow').config();
 const express = require("express");
 const userRoutes = require('./routes/users');
 const gameRoutes = require('./routes/games');
+const slackRoutes = require('./routes/slack');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const morgan = require("morgan");
@@ -17,6 +18,7 @@ mongoose.Promise = global.Promise;
   app.use(bodyParser.json());
   app.use('/api/users', userRoutes);
   app.use('/api/games', gameRoutes);
+  app.use('/api/slack', slackRoutes);
   app.use(morgan("dev"));
 
   // Serve the static files from the React app

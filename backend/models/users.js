@@ -6,13 +6,13 @@ var Usersschema = new Schema({
 
   name:{
     type: String,
-    required:[true, 'Name field is required']
+    required:[true, 'name field is required']
   },
 
   slack_id:{
     type: String,
     unique: true,
-    required:[true, 'Slack_id field is required']
+    required:[true, 'slack_id field is required']
   },
 
   slack_image:{
@@ -36,11 +36,6 @@ var Usersschema = new Schema({
   },
 
   games_lost: {
-    type: Number,
-    default: 0
-  },
-
-  games_drawn: {
     type: Number,
     default: 0
   },
