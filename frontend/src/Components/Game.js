@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Player from "./Player";
 import Paddle from "./Paddle";
-
+import PlayerPic from "./PlayerPic"
 const PLAYER_1 = 1;
 const PLAYER_2 = 2;
 
@@ -75,7 +75,18 @@ class Game extends Component {
           <button onClick={() => console.log(this.state)}>show me state</button>
         </div>
       );
-    } else return <div> the winner is player {this.state.winner}</div>;
+    } else return (
+     
+    <div>  
+
+    the winner is player {this.state.winner}
+    <PlayerPic pic = {this.state.winner === 1 ? player1pic : player2pic}  />
+ } 
+    
+    
+    {console.log(this.state)}
+    </div>
+    )
   }
 }
 
