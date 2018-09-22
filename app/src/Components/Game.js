@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Player from "./Player";
+import Paddle from "./Paddle"
 
 class Game extends Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class Game extends Component {
   }
 
   render() {
-    const { player1Points, player2Points } = this.state;
+    const { player1Points, player2Points, toServe } = this.state;
 
     if (!this.state.winner) {
       return (
@@ -54,6 +55,7 @@ class Game extends Component {
                 })
               }
             />
+            {toServe === 1 ? <Paddle direction = 'paddle-pic-left'/> : null}
           </div>
           <div className="right">
             <Player
@@ -64,6 +66,7 @@ class Game extends Component {
                 })
               }
             />
+            {toServe === 2 ? <Paddle direction = 'paddle-pic-right'/> : null}
           </div>
           <button onClick={() => console.log(this.state)}>show me state</button>
           <h1>the next person to serve is player {this.state.toServe} </h1>
