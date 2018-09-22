@@ -2,14 +2,19 @@ import React, { Component } from "react";
 import Player from "./Player";
 import Paddle from "./Paddle";
 
+const PLAYER_1 = 1;
+const PLAYER_2 = 2;
+
 class Game extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       player1Points: 0,
       player2Points: 0,
       winner: null,
-      toServe: 0
+      toServe: 0,
+      //player1Pic: ''
     };
   }
 
@@ -29,7 +34,7 @@ class Game extends Component {
   }
 
   swapServes() {
-    this.state.toServe === 1 ? this.setState({ toServe: 2 }) : this.setState({ toServe: 1 });
+    this.state.toServe === PLAYER_1 ? this.setState({ toServe: PLAYER_2 }) : this.setState({ toServe: PLAYER_1 });
   }
 
   scoreButtonClick(player) {
@@ -38,7 +43,7 @@ class Game extends Component {
     this.setState({toServe: player })
     
     } else {
-      if (player === 1) {
+      if (player === PLAYER_1) {
         this.setState({ player1Points: this.state.player1Points + 1 }, () => {
           this.findNextServe();
           this.findWinner();
@@ -58,13 +63,13 @@ class Game extends Component {
       return (
         <div>
           <div className="left">
-            <Player toServe={toServe} points={player1Points} onScoreIncremented={() => this.scoreButtonClick(1)} />
-            {toServe === 1 ? <Paddle direction="paddle-pic-left" /> : null}
+            <Player toServe={toServe} points={player1Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_1)} />
+            {toServe === PLAYER_1 ? <Paddle direction="paddle-pic-left" /> : null}
           </div>
           <div className="right">
-            <Player toServe={toServe} points={player2Points} onScoreIncremented={() => this.scoreButtonClick(2)} />
+            <Player toServe={toServe} points={player2Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_2)} />
 
-            {toServe === 2 ? <Paddle direction="paddle-pic-right" /> : null}
+            {toServe === PLAYER_2 ? <Paddle direction="paddle-pic-right" /> : null}
           </div>
           <button onClick={() => console.log(this.state)}>show me state</button>
         </div>

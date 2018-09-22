@@ -14,7 +14,7 @@ class Player extends Component {
             {this.props.toServe === 0 ? 'To Serve?' : 'Score'}
           </button>
         </div>
-        <PlayerPic />
+        <PlayerPic pic ={this.props.pic} />
       </div>
     );
   }
