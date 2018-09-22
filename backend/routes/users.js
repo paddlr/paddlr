@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
 const SlackUsers = require("../models/SlackUsers")
-const fetch = require("node-fetch");
 
 var slackUser = new SlackUsers();
 

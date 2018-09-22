@@ -17,8 +17,38 @@ var Usersschema = new Schema({
 
   slack_image:{
     type:String,
-    required:[true, 'Slack_id field is required']
-  }
+    required:[false]
+  },
+
+  slack_image_48:{
+    type:String,
+    required:[false]
+  },
+
+  slack_image_512:{
+    type:String,
+    required:[false]
+  },
+
+  games_won: {
+    type: Number,
+    default: 0
+  },
+
+  games_lost: {
+    type: Number,
+    default: 0
+  },
+
+  games_drawn: {
+    type: Number,
+    default: 0
+  },
+
+  total_score: {
+    type: Number,
+    default: 0
+  },
 
 });
 

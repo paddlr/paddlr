@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 var PlayersSchema = new Schema({
 
   player_id:{
-    type: String
+    type: String,
+    required:[true, 'Please pass the user_id']
   },
 
   player_score:{
