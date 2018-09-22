@@ -8,7 +8,6 @@ class Game extends Component {
       player1Points: 0,
       player2Points: 0,
       winner: null,
-      nextServeCounter: 1, // counts to 5, then resets to 1 
       toServe: 1
     };
   }
@@ -22,25 +21,21 @@ class Game extends Component {
     }
   }
 
-
-findNextServe(){
-  if(this.state.nextServeCounter !== 5){
-    this.setState({nextServeCounter: this.state.nextServeCounter +1})
-  } else {
-    this.setState({nextServeCounter: 1 }, () => this.swapServes())
+  findNextServe() {
+    if ((this.state.player1Points + this.state.player2Points) % 5 === 0) {
+      this.swapServes();
+    }
   }
-  
-
-}
 
   swapServes() {
     this.state.toServe === 1 ? this.setState({ toServe: 2 }) : this.setState({ toServe: 1 });
   }
 
-  scoreButtonClick() { //handles all the click methods 
+  scoreButtonClick() {
+    //handles all the click methods
     console.log(`the next person to serve is ${this.state.toServe}`);
 
-    this.findNextServe()
+    this.findNextServe();
     this.findWinner();
   }
 
