@@ -81,6 +81,7 @@ class Game extends Component {
 
     <h1 className = "winner_header"> The winner is player {this.state.winner}! </h1>
     <img src = {this.state.winner === 1 ? player1pic : player2pic} className = "winner_pic"  />
+    <button className = "play_again_button" onClick = {() => {this.setState({winner: null,  player1Points: 0, player2Points: 0,winner: null, toServe: 0 })}}>Play Again?</button>
  
     
     

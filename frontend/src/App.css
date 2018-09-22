@@ -161,6 +161,21 @@ ul,
   font-size: 1.2em;
 }
 
+.play_again_button{
+  background-color: #4caf50; /* Green */
+  color: white;
+  padding: 2% 10%;
+  text-align: center;
+  position: static;  
+  top: 75%;
+  right: 32%;
+  font-size: 1em;
+  max-width: 400px; 
+  max-height: 120px;
+  margin-left: 37%; 
+  margin-top: 10px;  
+}
+
 .paddle-pic-right {
   position: absolute;
   top: 50%;
