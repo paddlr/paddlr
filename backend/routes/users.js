@@ -1,6 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const Users = require('../models/users');
+const SlackUsers = require("../models/slackUsers")
+
+var slackUser = new SlackUsers();
+
+router.get("/slack", function(req, res){
+  var data = slackUser.getUsers(res);
+  console.log(data);
+})
 
 
 router.get("/", function(req, res){

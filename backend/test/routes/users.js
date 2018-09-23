@@ -4,8 +4,8 @@ describe('API User routes', function(){
   before(function(done){
     request.post('/api/users')
        .send({
-        "username": "user 1",
-        "passcode": "banana"
+        "name": "user 1",
+        "slack_id": "banana"
     })
     .expect(200)
     .end(function(err, res) {
@@ -24,7 +24,7 @@ describe('API User routes', function(){
 
     it('cannot get a User that does not exist', function(done) {
       request.get('/api/user/icecream')
-          .expect(404)
+          .expect(422)
           .end(function(err, res) {
               done(err);
           });
@@ -36,8 +36,8 @@ describe('API User routes', function(){
     it('saves a new user', function(done) {
       request.post('/api/users')
          .send({
-          "username": "user 1",
-          "passcode": "banana"
+          "name": "user 2",
+          "slack_id": "cherry"
       })
       .expect(200)
       .end(function(err, res) {
@@ -48,7 +48,7 @@ describe('API User routes', function(){
     it('does not save an invalid user with no name', function(done) {
       request.post('/api/users')
          .send({
-          "passcode": "banana"
+          "slack_id": "goan_curry"
       })
       .expect(422)
       .end(function(err, res) {
@@ -57,10 +57,10 @@ describe('API User routes', function(){
      });
 
 
-     it('does not save an invalid user with passcode', function(done) {
+     it('does not save a user without slack_id', function(done) {
        request.post('/api/users')
           .send({
-           "username": "chinatown"
+           "name": "chinatown"
        })
        .expect(422)
        .end(function(err, res) {
