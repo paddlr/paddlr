@@ -1,22 +1,36 @@
-// require('dotenv').load();
-require('dotenv-flow').config();
+if (process.env.NODE_ENV !== 'production'){
+  require('dotenv').load();
+}
 
 const express = require("express");
+var cors = require('cors');
 const userRoutes = require('./routes/users');
 const gameRoutes = require('./routes/games');
+const slackRoutes = require('./routes/slack');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const morgan = require("morgan");
 const path = require('path')
 const app = express();
 
-mongoose.connect("mongodb://steph:cheese1@ds161102.mlab.com:61102/steph",  { useNewUrlParser: true });
-mongoose.Promise = global.Promise;
+app.use(cors())
+
+var env = process.env.NODE_ENV
+var connectionString = ''
+if (env === 'test'){
+  connectionString = process.env.MONGOLAB_URI_TEST
+} else {
+  connectionString = process.env.MONGOLAB_URI
+};
+mongoose.connect(connectionString,  { useNewUrlParser: true })
+  .then(() => console.log('Connected to MongoDB...'))
+  .catch(err => console.error('Could not connect to MongoDB...'));
 
 // API calls
   app.use(bodyParser.json());
   app.use('/api/users', userRoutes);
   app.use('/api/games', gameRoutes);
+  app.use('/api/slack', slackRoutes);
   app.use(morgan("dev"));
 
   // Serve the static files from the React app

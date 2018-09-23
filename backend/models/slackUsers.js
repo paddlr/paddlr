@@ -1,9 +1,8 @@
 const fetch = require("node-fetch");
 const Url = "https://slack.com/api/users.list";
-const Users = require('../models/users');
+
 const Database = require("../models/databaseIntegration");
 var database = new Database();
-
 
 function SlackUsers(){
 
@@ -16,7 +15,6 @@ const options = {
     'Content-type': 'application/json'
   }
 };
-
 
 SlackUsers.prototype.getUsers = function(input){
   fetch(Url, options)

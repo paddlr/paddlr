@@ -5,13 +5,15 @@ const Schema = mongoose.Schema;
 var PlayersSchema = new Schema({
 
   player_id:{
-    type: String
+    type: String,
+    required:[true, 'Please pass the user_id as player_id']
   },
 
   player_score:{
     type: Number,
     min: 0,
-    required:[true, 'Score field is required']
+    max: 50,
+    required:[true, 'player_score field is required']
   }
 
 });
