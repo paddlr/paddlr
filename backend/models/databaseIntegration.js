@@ -1,14 +1,15 @@
 const Users = require('../models/users');
 function Database(){
+
 }
 
 Database.prototype.integration = function(slack_data){
   var jsonLength = Object.keys(slack_data).length;
-  var i;
-  for (i = 1; i = jsonLength; i++) {
+  console.log(Object.keys(slack_data));
+  for (var i = 0; i <= jsonLength; i++) {
     Users.findOne({slack_id: slack_data.members[i].id})
-      .then((users) => {
-        if (users) {
+      .then((user) => {
+        if (user) {
           console.log(slack_data.members[i].id, ' already exists');
         } else {
             Users.create({

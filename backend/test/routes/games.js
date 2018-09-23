@@ -1,4 +1,3 @@
-process.env.NODE_ENV = 'test';
 describe('API Games routes', function(){
 
   before(function(done){
@@ -7,9 +6,11 @@ describe('API Games routes', function(){
         "game_type": "friendly",
         "players": [
             {
+                "player_id": "12",
                 "player_score": 9
             },
             {
+                "player_id": "1",
                 "player_score": 2
             }
         ]
@@ -47,10 +48,12 @@ describe('API Games routes', function(){
           "game_type": "friendly",
           "players": [
               {
-                  "player_score": 199999999
+                "player_id": "12",
+                "player_score": 21
               },
               {
-                  "player_score": 222222
+                "player_id": "2",
+                "player_score": 2
               }
           ]
       })
@@ -66,10 +69,12 @@ describe('API Games routes', function(){
            "game_type": "friendly",
            "players": [
                {
-                   "player_score": "banana milk"
+                "player_id": "3",
+                "player_score": "banana milk"
                },
                {
-                   "player_score": 20
+                "player_id": "2",
+                "player_score": 20
                }
            ]
        })
