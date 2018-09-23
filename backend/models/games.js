@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 var Gamesschema = new Schema({
   game_type:{
     type: String,
-    default: "friendly"
+    default: "leaderboard",
+    enum: ['friendly', 'showcase_match', 'tournament', 'leaderboard']
   },
 
   game_created_at:{

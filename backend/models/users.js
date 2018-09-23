@@ -6,7 +6,9 @@ var Usersschema = new Schema({
 
   name:{
     type: String,
-    required:[true, 'name field is required']
+    required:[true, 'name field is required'],
+    minlength: 5,
+    maxlength: 40
   },
 
   slack_id:{
