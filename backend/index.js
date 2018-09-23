@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== 'production'){
 }
 
 const express = require("express");
+var cors = require('cors');
 const userRoutes = require('./routes/users');
 const gameRoutes = require('./routes/games');
 const slackRoutes = require('./routes/slack');
@@ -11,6 +12,8 @@ const mongoose = require('mongoose');
 const morgan = require("morgan");
 const path = require('path')
 const app = express();
+
+app.use(cors())
 
 var env = process.env.NODE_ENV
 var connectionString = ''
