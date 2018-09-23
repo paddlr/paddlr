@@ -1,4 +1,5 @@
 const Users = require('../models/users');
+
 const _ = require('lodash');
 
 function Database(){

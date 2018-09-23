@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const Url = "https://slack.com/api/users.list";
+
 const Database = require("../models/databaseIntegration");
 var database = new Database();
 
