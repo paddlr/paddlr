@@ -17,7 +17,7 @@ var connectionString = ''
 if (env === 'test'){
   connectionString = process.env.MONGOLAB_URI_TEST
 } else {
-  connectionString = process.env.MONGOLAB_URI_DEV
+  connectionString = process.env.MONGOLAB_URI
 };
 mongoose.connect(connectionString,  { useNewUrlParser: true })
   .then(() => console.log('Connected to MongoDB...'))
