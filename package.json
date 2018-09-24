@@ -11,9 +11,18 @@
     "dev": "concurrently --kill-others-on-fail \"npm server\" \"npm client\"",
     "dev:server": "cd frontend && npm build && cd .. && npm start",
     "start": "node backend/index.js",
-    "heroku-postbuild": "cd backend && npm install && cd ../frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "cd backend && npm install && cd ../frontend && npm install && npm install --only=dev --no-shrinkwrap && npm run build",
+    "uninstall:frontend": "rimraf \"./frontend/package-lock.json\" \"./frontend/node_modules\"",
+    "uninstall:backend": "rimraf \"./backend/package-lock.json\" \"./backend/node_modules\"",
+    "uninstall:root": "rimraf \"./package-lock.json\" \"./node_modules\"",
+    "reinstall": "npm run uninstall:frontend && npm run uninstall:backend && npm run install:all",
+    "install:all": "npm install && npm run install:backend && npm run install:frontend",
+    "install:frontend": "cd ./frontend && npm install",
+    "install:backend": "cd ./frontend && npm install"
   },
   "dependencies": {
-    "concurrently": "^4.0.1"
+    "concurrently": "^4.0.1",
+    "node-fetch": "^2.2.0",
+    "rimraf": "^2.6.2"
   }
 }

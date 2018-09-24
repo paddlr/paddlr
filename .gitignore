@@ -1,3 +1,6 @@
+backend/.env
+backend/.env.test
+
 backend/node_modules
 frontend/node_modules
 node_modules
@@ -12,7 +15,8 @@ frontend/build
 .DS_Store
 .env.local
 .env.development.local
-.env.test.local
+.env.test
+.env
 .env.production.local
 backend/.env
 backend/.env.test
