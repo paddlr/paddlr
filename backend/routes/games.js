@@ -8,8 +8,7 @@ var scoreLogic = new ScoreLogic();
 router.get("/", function(req, res, next){
   Games.find({}).then(function(Games){
     console.log("----------------")
-    var winner = scoreLogic.findWinner(Games);
-    scoreLogic.updateLoserInfo('5ba78209e751870015c3df94')
+    scoreLogic.updateScore(Games);
     res.send(Games);
   })
   .catch(next)
