@@ -3,28 +3,33 @@ const router = express.Router();
 const Games = require('../models/games');
 
 const Users = require('../models/users');
-
 const ScoreLogic = require('../models/scoreLogic');
-
 var scoreLogic = new ScoreLogic();
 
 
 router.get("/", function(req, res, next){
   Games.find({}).then(function(Games){
-    console.log("----------------")
-    var winner = scoreLogic.findWinner(Games);
-    scoreLogic.updateLoserInfo('5ba78209e751870015c3df94')
     res.send(Games);
   })
   .catch(next)
 });
 
+// Need to work on function that determines if given player is winner
 router.post("/", async(req, res) => {
   const player_1 = await Users.findOne({_id: req.body.players[0].player_id});
   const player_2 = await Users.findOne({_id: req.body.players[1].player_id});
-  
-  console.log('Player 1: ', player_1.name, 'vs Player 2: ', player_2.name);
-  res.send(Games);
+
+  if (scoreLogic.isPlayerOneWinner(req.body)){
+    scoreLogic.updateWinnerInfo(player_1._id)
+    scoreLogic.updateLoserInfo(player_2._id)
+  }
+  else {
+    scoreLogic.updateWinnerInfo(player_2._id)
+    scoreLogic.updateLoserInfo(player_1._id)
+  }
+  Games.create(req.body).then(function(Games){
+    res.send(Games);
+  })
 });
 
 router.get("/:id", function(req, res, next){
