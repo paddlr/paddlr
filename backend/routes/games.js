@@ -1,10 +1,19 @@
 const express = require('express');
 const router = express.Router();
 const Games = require('../models/games');
+
 const Users = require('../models/users');
+
+const ScoreLogic = require('../models/scoreLogic');
+
+var scoreLogic = new ScoreLogic();
+
 
 router.get("/", function(req, res, next){
   Games.find({}).then(function(Games){
+    console.log("----------------")
+    var winner = scoreLogic.findWinner(Games);
+    scoreLogic.updateLoserInfo('5ba78209e751870015c3df94')
     res.send(Games);
   })
   .catch(next)
