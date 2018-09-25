@@ -12,6 +12,7 @@ const mongoose = require('mongoose');
 const morgan = require("morgan");
 const path = require('path')
 const app = express();
+app.use(morgan("dev"));
 
 app.use(cors())
 
@@ -31,7 +32,7 @@ mongoose.connect(connectionString,  { useNewUrlParser: true })
   app.use('/api/users', userRoutes);
   app.use('/api/games', gameRoutes);
   app.use('/api/slack', slackRoutes);
-  app.use(morgan("dev"));
+  
 
   // Serve the static files from the React app
   app.use(express.static(path.join(__dirname, '/../frontend/build')));
