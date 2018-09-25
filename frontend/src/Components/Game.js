@@ -3,12 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
-import {
-  setPlayerScore,
-  endGame,
-  sendMatchToLeaderboard,
-  incrementScore,
-} from "../redux/actions/game";
+import { setPlayerScore, endGame, sendMatchToLeaderboard } from "../redux/actions/game";
 import { getWinningPlayer } from "../helpers/winningPlayer";
 
 class Game extends Component {
@@ -27,8 +22,9 @@ class Game extends Component {
     }
   };
 
+  // I think I need to add swapServes and/or setServe as props
   render() {
-    const { winningPlayer, players, setPlayerScore } = this.props;
+    const { winningPlayer, players, setPlayerScore, currentServer } = this.props;
     const displayedPlayers = winningPlayer || players;
     return (
       <div>
@@ -39,18 +35,13 @@ class Game extends Component {
                 <img src={player.slack_image} alt={player.id} />
                 <figcaption>{player.name}</figcaption>
               </figure>
-              <div>Score: {player.score}</div>
-              <div>{player.currentServer} serving</div>
               {winningPlayer ? (
                 "WINNER"
               ) : (
                 <div>
                   <button
                     onClick={() => {
-                      {
-                        setPlayerScore(index, 1);
-                        // incrementScore(index, 1);
-                      }
+                      setPlayerScore(index, 1);
                     }}
                   >
                     +
@@ -59,13 +50,19 @@ class Game extends Component {
                     disabled={player.score === 0}
                     onClick={() => {
                       setPlayerScore(index, -1);
-                      // incrementScore(index, -1);
                     }}
                   >
                     -
                   </button>
                 </div>
               )}
+              <div>Score: {player.score}</div>
+              {/* This is my latest useless implementation `player.currentServer` 
+              which it can't read because I haven't given Game the incrementScore() prop
+              which dispatches the serving functions.
+              I'm just not sure if `setServe()` and `swapServe()` should be
+              props too - it feels like they should. */}
+              {currentServer === index && <div>Serving</div>}
             </section>
           ))}
         </div>
@@ -79,6 +76,7 @@ Game.propTypes = {
   winningPlayer: PropTypes.arrayOf(PropTypes.shape({})),
   history: PropTypes.shape({}).isRequired,
   setPlayerScore: PropTypes.func.isRequired,
+  currentServer: PropTypes.number.isRequired,
   // swapServes: Proptypes.func.isRequired,
 };
 
@@ -89,6 +87,7 @@ const mapStateToProps = state => {
   }));
   return {
     players,
+    currentServer: state.game.currentServer,
     inProgress: state.game.inProgress,
     winningPlayer: getWinningPlayer(players),
   };

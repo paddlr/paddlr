@@ -4,12 +4,13 @@ import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
 import { fetchUsers } from "../redux/actions/users";
-import { setPlayerId, startGame, resetPlayers } from "../redux/actions/game";
+import { setPlayerId, startGame, resetPlayers, resetServe } from "../redux/actions/game";
 
 class StartGame extends Component {
   componentDidMount = () => {
     this.props.fetchUsers();
     this.props.resetPlayers();
+    this.props.resetServe();
   };
 
   onSelectOption = which => event => {
@@ -25,20 +26,36 @@ class StartGame extends Component {
     const { users, players } = this.props;
     return (
       <div>
-        {players.map((player, index, playerList) => (
-          <select key={index} value={player.id || ""} onChange={this.onSelectOption(index)}>
-            <option>Select Player</option>
-            {users.map(user => (
-              <option
-                key={user._id}
-                disabledLink={playerList.map(p => p.id).includes(user._id) && player !== user._id}
-                value={user._id}
+        {players.map((player, index, playerList) => {
+          const user = users.find(user => user._id === player.id);
+          return (
+            <div>
+              <h3>
+                {index === 0 ? "Server" : "Challenger"}
+                {user && `: ${user.name}`}
+              </h3>
+              <figure
+                style={{ display: "block", width: 64, height: 64, backgroundColor: "lightgrey" }}
               >
-                {user.name}
-              </option>
-            ))}
-          </select>
-        ))}
+                {user && <img width={64} src={user.slack_image} alt={user.name} />}
+              </figure>
+              <select key={index} value={player.id || ""} onChange={this.onSelectOption(index)}>
+                <option>Select Player</option>
+                {users.map(user => (
+                  <option
+                    key={user._id}
+                    disabledLink={
+                      playerList.map(p => p.id).includes(user._id) && player !== user._id
+                    }
+                    value={user._id}
+                  >
+                    {user.name}
+                  </option>
+                ))}
+              </select>
+            </div>
+          );
+        })}
         <div>
           <button disabledLink={!players.every(player => player.id)} onClick={this.startGame}>
             Start Game
@@ -57,7 +74,7 @@ StartGame.propTypes = {
   setPlayerId: PropTypes.func.isRequired,
   startGame: PropTypes.func.isRequired,
   resetPlayers: PropTypes.func.isRequired,
-  // swapServes: PropTypes.func.isRequired,
+  resetServe: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({
@@ -70,6 +87,7 @@ const mapDispatchToProps = {
   setPlayerId,
   startGame,
   resetPlayers,
+  resetServe,
 };
 
 export default withRouter(

@@ -6,10 +6,13 @@ import {
   SET_PLAYER_ID,
   SET_PLAYER_SCORE,
   RESET_PLAYERS,
-  INCREMENT_SERVE,
+  SET_SERVE,
   CHANGE_SERVER,
   RESET_SERVE,
 } from "../reducers/game";
+
+const SERVE_CHANGE = 5;
+const SERVE_SCORE_FOR_QUICK_SWAP = 20;
 
 export const startGame = () => ({
   type: START_GAME,
@@ -42,64 +45,39 @@ export const setPlayerScore = (which, amount) => (dispatch, getState) => {
     type: SET_PLAYER_SCORE,
     payload: players,
   });
+  dispatch(setServe());
+  dispatch(swapServes());
 };
 
-export const incrementServe = (dispatch, getState) => {
-  const currentServer = getState().game.serveCount;
+export const setServe = () => (dispatch, getState) => {
+  const serveCount = getState().game.serveCount;
   dispatch({
-    type: INCREMENT_SERVE,
-    payload: currentServer + 1,
+    type: SET_SERVE,
+    payload: serveCount + 1,
   });
 };
 
 export const swapServes = () => (dispatch, getState) => {
-  const SERVE_CHANGE = 5;
-  const game = getState().game;
-  const players = game.players.map(player => player.id);
-  const totalServes = game.serves;
-  const currentServer = game.currentServer;
-  const otherServer = players.find(player => player.id !== currentServer);
+  const { players, serveCount, currentServer } = getState().game;
 
-  const isGreaterThan20 = totalServes >= 20;
-  const isDivisibleBy5 = totalServes % SERVE_CHANGE === 0;
+  const aPlayerHasAScoreOf20 = !!players.find(player => player.score >= SERVE_SCORE_FOR_QUICK_SWAP);
 
-  if (isGreaterThan20 || isDivisibleBy5) {
+  const servesAreDivisibleBy5 = serveCount % SERVE_CHANGE === 0;
+
+  if (aPlayerHasAScoreOf20 || servesAreDivisibleBy5) {
     dispatch({
       type: CHANGE_SERVER,
-      payload: otherServer,
+      payload: currentServer === 1 ? 0 : 1,
     });
   }
 };
 
-export const incrementScore = (which, amount) => (dispatch, getState) => {
-  const players = getState().game.players;
-  const updatedPlayers = players.map(
-    (player, index) =>
-      index === which
-        ? { ...player, score: Math.max(0, player.score + amount) }
-        : player
-  );
-  dispatch(updatedPlayers(updatedPlayers));
-  dispatch(incrementServe());
-  dispatch(swapServes());
-};
-
-// export const incrementScore = (which, amount) => (dispatch, getState) => {
-//   const players = getState().game.players.map((player, index) => ({
-//     ...player,
-//     score:
-//       which === index && Number.isFinite(amount)
-//         ? Math.max(0, player.score + amount)
-//         : player.score,
-//   }));
-//   dispatch({
-//     type: SET_PLAYER_SCORE,
-//     payload: players,
-//   });
-// };
-
 export const resetPlayers = () => ({
   type: RESET_PLAYERS,
+});
+
+export const resetServe = () => ({
+  type: RESET_SERVE,
 });
 
 export const sendMatchToLeaderboard = () => (_, getState) => {
