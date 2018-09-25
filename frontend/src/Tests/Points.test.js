@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import Points from "./Points";
+import Points from "./Components/Points";
 
 describe("Points", () => {
   let points = shallow(<Points />);
