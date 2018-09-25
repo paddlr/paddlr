@@ -57,6 +57,7 @@ StartGame.propTypes = {
   setPlayerId: PropTypes.func.isRequired,
   startGame: PropTypes.func.isRequired,
   resetPlayers: PropTypes.func.isRequired,
+  // swapServes: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = state => ({

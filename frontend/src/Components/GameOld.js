@@ -31,7 +31,9 @@ class Game extends Component {
   }
 
   swapServes() {
-    this.state.toServe === 1 ? this.setState({ toServe: 2 }) : this.setState({ toServe: 1 });
+    this.state.toServe === 1
+      ? this.setState({ toServe: 2 })
+      : this.setState({ toServe: 1 });
   }
 
   scoreButtonClick() {
@@ -77,5 +79,3 @@ class Game extends Component {
 }
 
 export default Game;
-
-/* <Paddle direction = 'paddle-pic-right'/> */
