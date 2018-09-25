@@ -1,15 +1,21 @@
 import React, { Component } from "react";
 import Player from "./Player";
+import Paddle from "./Paddle";
+import PlayerPic from "./PlayerPic"
+const PLAYER_1 = 1;
+const PLAYER_2 = 2;
 
 class Game extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
       player1Points: 0,
       player2Points: 0,
       winner: null,
-      nextServeCounter: 1, // counts to 5, then resets to 1 
-      toServe: 1
+      toServe: 0,
+      player1pic: 'https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537275284/EdT_jg1gfi.jpg',
+      player2pic: 'https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537268860/angela-profile-image_cyhzx7.jpg'
     };
   }
 
@@ -22,62 +28,67 @@ class Game extends Component {
     }
   }
 
-
-findNextServe(){
-  if(this.state.nextServeCounter !== 5){
-    this.setState({nextServeCounter: this.state.nextServeCounter +1})
-  } else {
-    this.setState({nextServeCounter: 1 }, () => this.swapServes())
+  findNextServe() {
+    if ((this.state.player1Points + this.state.player2Points) % 5 === 0) {
+      this.swapServes();
+    }
   }
-  
-
-}
 
   swapServes() {
-    this.state.toServe === 1 ? this.setState({ toServe: 2 }) : this.setState({ toServe: 1 });
+    this.state.toServe === PLAYER_1 ? this.setState({ toServe: PLAYER_2 }) : this.setState({ toServe: PLAYER_1 });
   }
 
-  scoreButtonClick() { //handles all the click methods 
-    console.log(`the next person to serve is ${this.state.toServe}`);
-
-    this.findNextServe()
-    this.findWinner();
+  scoreButtonClick(player) {
+    //handles all the click methods
+    if (this.state.toServe === 0) {
+    this.setState({toServe: player })
+    
+    } else {
+      if (player === PLAYER_1) {
+        this.setState({ player1Points: this.state.player1Points + 1 }, () => {
+          this.findNextServe();
+          this.findWinner();
+        });
+      } else {
+        this.setState({ player2Points: this.state.player2Points + 1 }, () => {
+          this.findNextServe();
+          this.findWinner();
+        });
+      }
+    }
   }
-
   render() {
-    const { player1Points, player2Points } = this.state;
+    const { player1Points, player2Points, toServe, player1pic, player2pic } = this.state;
 
     if (!this.state.winner) {
       return (
         <div>
           <div className="left">
-            <Player
-              points={player1Points}
-              onScoreIncremented={() =>
-                this.setState({ player1Points: player1Points + 1 }, () => {
-                  this.scoreButtonClick();
-                })
-              }
-            />
+            <Player toServe={toServe} pic =  {player1pic} points={player1Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_1)} />
+            {toServe === PLAYER_1 ? <Paddle direction="paddle-pic-left" /> : null}
           </div>
           <div className="right">
-            <Player
-              points={player2Points}
-              onScoreIncremented={() =>
-                this.setState({ player2Points: player2Points + 1 }, () => {
-                  this.scoreButtonClick();
-                })
-              }
-            />
+            <Player toServe={toServe} pic = {player2pic} points={player2Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_2)} />
+
+            {toServe === PLAYER_2 ? <Paddle direction="paddle-pic-right" /> : null}
           </div>
           <button onClick={() => console.log(this.state)}>show me state</button>
-          <h1>the next person to serve is player {this.state.toServe} </h1>
         </div>
       );
-    } else return <div> the winner is player {this.state.winner}</div>;
+    } else return (
+     
+    <div>  
+
+    <h1 className = "winner_header"> The winner is player {this.state.winner}! </h1>
+    <img src = {this.state.winner === 1 ? player1pic : player2pic} className = "winner_pic"  />
+    <button className = "play_again_button" onClick = {() => {this.setState({winner: null,  player1Points: 0, player2Points: 0,winner: null, toServe: 0 })}}>Play Again?</button>
+ 
+    
+    
+    {console.log(this.state)}
+    </div>
+    )
   }
 }
 
 export default Game;
-
-/* <Paddle direction = 'paddle-pic-right'/> */
