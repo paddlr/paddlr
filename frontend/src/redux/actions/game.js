@@ -49,11 +49,11 @@ export const setPlayerScore = (which, amount) => (dispatch, getState) => {
   dispatch(swapServes());
 };
 
-export const setServe = () => (dispatch, getState) => {
+export const setServe = (amount = 1) => (dispatch, getState) => {
   const serveCount = getState().game.serveCount;
   dispatch({
     type: SET_SERVE,
-    payload: serveCount + 1,
+    payload: serveCount + amount,
   });
 };
 

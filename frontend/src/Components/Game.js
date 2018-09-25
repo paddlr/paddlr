@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router-dom";
 
-import { setPlayerScore, endGame, sendMatchToLeaderboard } from "../redux/actions/game";
+import { setPlayerScore, setServe, endGame, sendMatchToLeaderboard } from "../redux/actions/game";
 import { getWinningPlayer } from "../helpers/winningPlayer";
 
 class Game extends Component {
@@ -15,16 +15,26 @@ class Game extends Component {
     }
   };
 
-  componentDidUpdate = () => {
-    if (this.props.winningPlayer && this.props.inProgress) {
-      this.props.endGame();
-      this.props.sendMatchToLeaderboard();
-    }
+  downgradeWinner = () => {
+    const { players, winningPlayer, setPlayerScore } = this.props;
+    // First we need to get the index of the winning player
+    const winningPlayerIndex = players.map(player => player.id).indexOf(winningPlayer[0].id);
+    // We need to go 2 serves back, because
+    // setPlayerScore will automatically
+    // increment the serves by 1. We want
+    // ultimately to be 1 serve back.
+    setServe(-2);
+    setPlayerScore(winningPlayerIndex, -1);
+  };
+
+  finishGameAndSendResultToLeaderboard = () => {
+    this.props.endGame();
+    this.props.sendMatchToLeaderboard();
   };
 
   // I think I need to add swapServes and/or setServe as props
   render() {
-    const { winningPlayer, players, setPlayerScore, currentServer } = this.props;
+    const { winningPlayer, players, setPlayerScore, currentServer, inProgress } = this.props;
     const displayedPlayers = winningPlayer || players;
     return (
       <div>
@@ -66,6 +76,13 @@ class Game extends Component {
             </section>
           ))}
         </div>
+        {!!winningPlayer && inProgress ? (
+          <div>
+            Someone has won. End game?
+            <button onClick={this.finishGameAndSendResultToLeaderboard}>End game</button>
+            <button onClick={this.downgradeWinner}>Whoops! Nobody won</button>
+          </div>
+        ) : null}
       </div>
     );
   }

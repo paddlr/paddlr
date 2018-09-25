@@ -29,7 +29,7 @@ class StartGame extends Component {
         {players.map((player, index, playerList) => {
           const user = users.find(user => user._id === player.id);
           return (
-            <div>
+            <div key={index}>
               <h3>
                 {index === 0 ? "Server" : "Challenger"}
                 {user && `: ${user.name}`}
@@ -39,7 +39,7 @@ class StartGame extends Component {
               >
                 {user && <img width={64} src={user.slack_image} alt={user.name} />}
               </figure>
-              <select key={index} value={player.id || ""} onChange={this.onSelectOption(index)}>
+              <select value={player.id || ""} onChange={this.onSelectOption(index)}>
                 <option>Select Player</option>
                 {users.map(user => (
                   <option
