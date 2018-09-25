@@ -14,6 +14,8 @@ body {
   overflow-x: hidden;
   border-bottom: 20px solid #cb4345;
 }
+
+
 .navbar,
 .navbar-inverse,
 .navbar-fixed-top {
@@ -30,16 +32,16 @@ body {
   font-weight: 300;
   align-items: center; 
 
-
 }
 
 .menu-items {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin: 0 40%;
   width: 50%;
   align-items: center; 
+  margin-right: 40%; 
+ ; 
 }
 
 li {
@@ -81,14 +83,14 @@ ul,
 .left {
   float: left;
   position: relative;
-  width: 50%;
+  
 }
 
 .right {
   border-left: 4px solid #686d6d;
   float: right;
   position: relative;
-  width: 50%;
+
 }
 
 .games-won-left {

@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { Button } from 'reactstrap';
+
 import Player from "./Player";
 import Paddle from "./Paddle";
 import PlayerPic from "./PlayerPic"
@@ -62,17 +64,17 @@ class Game extends Component {
 
     if (!this.state.winner) {
       return (
-        <div>
-          <div className="left">
+        <div className = "container-fluid">
+          <div className="left col-lg-6" >
             <Player toServe={toServe} pic =  {player1pic} points={player1Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_1)} />
             {toServe === PLAYER_1 ? <Paddle direction="paddle-pic-left" /> : null}
           </div>
-          <div className="right">
+          <div className="right col-lg-6">
             <Player toServe={toServe} pic = {player2pic} points={player2Points} onScoreIncremented={() => this.scoreButtonClick(PLAYER_2)} />
 
             {toServe === PLAYER_2 ? <Paddle direction="paddle-pic-right" /> : null}
           </div>
-          <button onClick={() => console.log(this.state)}>show me state</button>
+          <Button onClick={() => console.log(this.state)}>show me state</Button>
         </div>
       );
     } else return (
