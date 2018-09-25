@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class PlayerPic extends Component {
   render() {
     return (
-      <div>
+      <div id="button-id">
         <button className="player-button">
           <img
             className="player-pic"
