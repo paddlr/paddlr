@@ -23,11 +23,13 @@ body {
 .nav,
 .navbar-nav,
 .navbar-right {
-  display: inline-flex;
+  display: inherit;
   list-style: none;
   font-family: "Open Sans", sans-serif;
   font-size: 2.5em;
   font-weight: 300;
+  align-items: center; 
+
 
 }
 
@@ -37,6 +39,7 @@ body {
   justify-content: center;
   margin: 0 40%;
   width: 50%;
+  align-items: center; 
 }
 
 li {
