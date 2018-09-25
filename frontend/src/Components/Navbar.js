@@ -4,8 +4,16 @@ class Navbar extends Component {
   render() {
     return (
       <div>
+
+      <nav class="nav">
+  <div class="nav-bar">
+    <a class="nav-link" href="#sect-2">Play</a>
+    <a class="nav-link" href="#sect-3">Leaderboard</a>
+    <span class="nav-slider"></span>
+  </div>
+</nav>
       
-        <nav className="navbar navbar-inverse navbar-fixed-top">
+        {/* <nav className="navbar navbar-inverse navbar-fixed-top">
             <ul className="navbar-right">
               <button className="paddle-button">
                 <img
@@ -20,7 +28,7 @@ class Navbar extends Component {
               <button type="button" className="profile-button">
               </button>
             </ul>
-        </nav>
+        </nav> */}
       
       </div>
     );
