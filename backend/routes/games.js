@@ -4,8 +4,9 @@ const Games = require('../models/games');
 
 const Users = require('../models/users');
 const ScoreLogic = require('../models/scoreLogic');
+const SlackMessage = require('../models/slackMessage');
 var scoreLogic = new ScoreLogic();
-
+var slackMessage = new SlackMessage();
 
 router.get("/", function(req, res, next){
   Games.find({}).then(function(Games){
@@ -18,14 +19,16 @@ router.get("/", function(req, res, next){
 router.post("/", async(req, res) => {
   const player_1 = await Users.findOne({_id: req.body.players[0].player_id});
   const player_2 = await Users.findOne({_id: req.body.players[1].player_id});
-
+  
   if (scoreLogic.isPlayerOneWinner(req.body)){
-    scoreLogic.updateWinnerInfo(player_1._id)
-    scoreLogic.updateLoserInfo(player_2._id)
+    scoreLogic.updateWinnerInfo(player_1._id);
+    scoreLogic.updateLoserInfo(player_2._id);
+    slackMessage.postMessage(player_1.name, player_2.name);
   }
   else {
-    scoreLogic.updateWinnerInfo(player_2._id)
-    scoreLogic.updateLoserInfo(player_1._id)
+    scoreLogic.updateWinnerInfo(player_2._id);
+    scoreLogic.updateLoserInfo(player_1._id);
+    slackMessage.postMessage(player_2.name, player_1.name);
   }
   Games.create(req.body).then(function(Games){
     res.send(Games);
