@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import Navbar from './Navbar';
 import Game from './Game'; 
+
 class App extends Component {
   constructor(props) {
     super(props);

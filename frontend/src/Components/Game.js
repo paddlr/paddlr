@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Player from "./Player";
 import Paddle from "./Paddle";
+import { Button } from 'reactstrap';
+
 import PlayerPic from "./PlayerPic"
 const PLAYER_1 = 1;
 const PLAYER_2 = 2;
@@ -72,7 +74,7 @@ class Game extends Component {
 
             {toServe === PLAYER_2 ? <Paddle direction="paddle-pic-right" /> : null}
           </div>
-          <button onClick={() => console.log(this.state)}>show me state</button>
+          <Button onClick={() => console.log(this.state)}>show me state</Button>
         </div>
       );
     } else return (
