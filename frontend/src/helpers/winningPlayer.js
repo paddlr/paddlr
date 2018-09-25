@@ -31,4 +31,11 @@ export const getWinningPlayer = players =>
   // slice at the first index of the array, and
   // only takes one item.
   // This will of course be the winner.
-  hasWinningPlayer(players) ? players.sort(sortByHighestScore).slice(0, 1) : undefined;
+  // We use slice() to duplicate the array,
+  // otherwise sort will mutate it in place.
+  hasWinningPlayer(players)
+    ? players
+        .slice()
+        .sort(sortByHighestScore)
+        .slice(0, 1)
+    : undefined;

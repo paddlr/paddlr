@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const NavLink = ({ to, disabledLink, children }) =>
   disabledLink ? (
-    <button disabledLink>{children}</button>
+    <button disabled>{children}</button>
   ) : (
     <Link to={to}>
       <button>{children}</button>

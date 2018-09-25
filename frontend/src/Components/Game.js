@@ -35,7 +35,7 @@ class Game extends Component {
   // I think I need to add swapServes and/or setServe as props
   render() {
     const { winningPlayer, players, setPlayerScore, currentServer, inProgress } = this.props;
-    const displayedPlayers = winningPlayer || players;
+    const displayedPlayers = winningPlayer && !inProgress ? winningPlayer : players;
     return (
       <div>
         <div style={{ display: "flex", flexDirection: "row" }}>
@@ -46,7 +46,11 @@ class Game extends Component {
                 <figcaption>{player.name}</figcaption>
               </figure>
               {winningPlayer ? (
-                "WINNER"
+                winningPlayer[0].id === player.id ? (
+                  "WON"
+                ) : (
+                  "LOST"
+                )
               ) : (
                 <div>
                   <button
@@ -72,7 +76,7 @@ class Game extends Component {
               which dispatches the serving functions.
               I'm just not sure if `setServe()` and `swapServe()` should be
               props too - it feels like they should. */}
-              {currentServer === index && <div>Serving</div>}
+              {currentServer === index && !winningPlayer && <div>Serving</div>}
             </section>
           ))}
         </div>

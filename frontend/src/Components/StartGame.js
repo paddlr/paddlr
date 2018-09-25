@@ -44,9 +44,7 @@ class StartGame extends Component {
                 {users.map(user => (
                   <option
                     key={user._id}
-                    disabledLink={
-                      playerList.map(p => p.id).includes(user._id) && player !== user._id
-                    }
+                    disabled={playerList.map(p => p.id).includes(user._id) && player !== user._id}
                     value={user._id}
                   >
                     {user.name}
@@ -57,7 +55,7 @@ class StartGame extends Component {
           );
         })}
         <div>
-          <button disabledLink={!players.every(player => player.id)} onClick={this.startGame}>
+          <button disabled={!players.every(player => player.id)} onClick={this.startGame}>
             Start Game
           </button>
         </div>

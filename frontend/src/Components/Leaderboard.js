@@ -15,17 +15,20 @@ class Leaderboard extends Component {
       <table>
         <thead />
         <tbody>
-          {users.sort((a, b) => (a.games_won > b.games_won ? -1 : 1)).map(user => (
-            <tr key={user._id}>
-              <td>
-                <img width={32} src={user.slack_image} alt={user.name} />
-              </td>
-              <td>{user.name}</td>
-              <td>{user.games_won}</td>
-              <td>{user.games_lost}</td>
-              <td>{user.total_score}</td>
-            </tr>
-          ))}
+          {users
+            .slice()
+            .sort((a, b) => (a.games_won > b.games_won ? -1 : 1))
+            .map(user => (
+              <tr key={user._id}>
+                <td>
+                  <img width={32} src={user.slack_image} alt={user.name} />
+                </td>
+                <td>{user.name}</td>
+                <td>{user.games_won}</td>
+                <td>{user.games_lost}</td>
+                <td>{user.total_score}</td>
+              </tr>
+            ))}
         </tbody>
       </table>
     );

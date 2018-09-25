@@ -7,10 +7,10 @@ import NavLink from "./NavLink";
 const Nav = ({ inProgress }) => (
   <nav className="navbar navbar-inverse navbar-fixed-top">
     <div className="menu-items">
-      <NavLink className="menu-item" to="/" disabled={inProgress}>
+      <NavLink className="menu-item" to="/" disabledLink={inProgress}>
         Play
       </NavLink>
-      <NavLink className="menu-item" to="/game" disabled={!inProgress}>
+      <NavLink className="menu-item" to="/game" disabledLink={!inProgress}>
         Game In Progress
       </NavLink>
       <NavLink className="menu-item" to="/leaderboard">
