@@ -7,8 +7,7 @@ var scoreLogic = new ScoreLogic();
 
 router.get("/", function(req, res, next){
   Games.find({}).then(function(Games){
-    console.log("----------------")
-    scoreLogic.updateScore(Games);
+    scoreLogic.verifyUsersAndUpdateScore(Games);
     res.send(Games);
   })
   .catch(next)
