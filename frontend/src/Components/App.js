@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import Navbar from './Navbar';
 import Game from './Game';
-import Leaderboard from './Leaderboard';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -15,7 +15,7 @@ class App extends Component {
     return (   //buttons in the navbar component should  update the state of app. rather than it just being a huge button at the bottom :)
       <div>
         <Navbar />
-        <Game />         
+        <Game />
 
         {/* <button onClick ={ () => {this.setState({view: 'leaderboard'})}} className = "score_button" >show me the leaderboard</button>   */}
 
