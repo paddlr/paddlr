@@ -28,8 +28,7 @@ body {
   font-family: "Open Sans", sans-serif;
   font-size: 2.5em;
   font-weight: 300;
-  margin: 0;
-  padding: 0;
+
 }
 
 .menu-items {
@@ -37,7 +36,6 @@ body {
   flex-direction: row;
   justify-content: center;
   margin: 0 40%;
-  /* padding: 3%; */
   width: 50%;
 }
 
@@ -56,7 +54,7 @@ ul,
 .paddle-logo {
   border-color: #cb4345;
   float: left;
-  width: 10em;
+  width: 3em;
 }
 
 .paddle-button {

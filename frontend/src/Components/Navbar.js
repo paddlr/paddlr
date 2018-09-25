@@ -5,9 +5,8 @@ class Navbar extends Component {
     return (
       <div>
         <nav className="navbar navbar-inverse navbar-fixed-top">
-          <div className="collapse navbar-collapse" id="navbar-collapse">
-            <ul className="nav navbar-nav navbar-right">
-              <button type="button" className="paddle-button">
+            <ul className="navbar-right">
+              <button className="paddle-button">
                 <img
                   className="paddle-logo"
                   src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"
@@ -29,14 +28,8 @@ class Navbar extends Component {
                 </li>
               </div>
               <button type="button" className="profile-button">
-                <img
-                  className="profile-pic"
-                  src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537268860/angela-profile-image_cyhzx7.jpg"
-                  alt="profile pic"
-                />
               </button>
             </ul>
-          </div>
         </nav>
       </div>
     );
