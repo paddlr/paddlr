@@ -34,11 +34,14 @@ As this was our final project at Maker's Academy, we decided to pay tribute to i
 #### MVP
 * Build a single page app in React where user's can have their points counted for a single game of table-tennis.
 * Points for each plater are counted by clicking a score button underneath the player's profile picture until a winner has been determined.
-* Have an API that's fully-documented and validated that has game and user roots
+* Have an API that's fully-documented and validated that has game and user routes
 
 (To be added)
 
-### Testing and Code Quality Backend
+### Testing and Code Quality 
+*Frontend*
+
+*Backend*
 - Eslint. Run `npm lint` to run through the model and view components.  
 - Istanbul. To test coverage.
 - Mocha is our test runner
@@ -59,6 +62,11 @@ In a meeting before we had settled on the details we discussed what we wanted to
 ##  Completed User Stories:
 
 ```
+As a referee
+So I can easily add players
+I would like to be able to select paddlrs from our Slack channel
+```
+```
 As a referee,
 So I can easily keep track of the score,
 I would like to click on the player that won the point to award it
@@ -66,7 +74,7 @@ I would like to click on the player that won the point to award it
 ```
 As a referee,
 So I know who's serve is next,
-I would like to be told which player's serve is next
+I would like a next serve indicator
 ```
 ```
 As a referee,
@@ -74,28 +82,37 @@ So I know who has won the game,
 I would like to be notified once a winner has been determined
 ```
 ```
-As a referee
-So I can add players
-I would like to be able to select paddlrs from our Slack channel
+As a paddlr,
+So I know my ranking in my group,
+I would like to see where I feature in my group's league table
+```
+```
+As a paddlr,
+Who likes to gloat,
+I would like my results to be posted in the Slack channel
+```
+```
+As a user,
+Who owns multiple devices,
+I would like the app to be responsive
 ```
 
 
 ## Future User Stories:
-
+```
+As a spectator,
+So I don't get bored,
+I would like to see appealing animations
+```
 ```
 As a paddlr,
 So I don't have to always bring my 'A' game,
 I would like to choose if a match is friendly or competitve
 ```
 ```
-As a referee,
+As an excitable referee,
 In case I make a mistake,
 I would like to undo my previous move
-```
-```
-As a paddlr,
-So I know my ranking in my group,
-I would like to see where I feature in my group's league table
 ```
 ```
 As a paddlr,
