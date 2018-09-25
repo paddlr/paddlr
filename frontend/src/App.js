@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Button } from 'reactstrap';
 
 
 class App extends Component {
@@ -14,10 +13,8 @@ class App extends Component {
                 <button type="button" className="paddle-button">
                   <img
                     className="paddle-logo"
-                    src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"
-                  />
+                    src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"/>
 
-                  <Button color="primary">primary</Button>
                 </button>
                 <div className="menu-items">
                   <li>
