@@ -18,9 +18,11 @@ body {
 .navbar-inverse,
 .navbar-fixed-top {
   background-color: #cb4345;
+  margin: 0;
+  padding: 0;
 }
 
-.nav,
+/* .nav,
 .navbar-nav,
 .navbar-right {
   display: inline-flex;
@@ -30,15 +32,18 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
-}
+} */
 
 .menu-items {
-  display: flex;
+  /* display: flex;
   flex-direction: row;
-  justify-content: center;
-  margin: 0 40%;
+  justify-content: center; */
+  margin: auto;
   /* padding: 3%; */
-  width: 50%;
+  width: 100%;
+  font-family: "Open Sans", sans-serif;
+  font-size: 2.5em;
+  font-weight: 300;
 }
 
 li {

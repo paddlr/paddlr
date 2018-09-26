@@ -1,83 +1,121 @@
 import React, { Component } from "react";
-import Player from "./Player";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { withRouter } from "react-router-dom";
+
+import { setPlayerScore, setServe, endGame, sendMatchToLeaderboard } from "../redux/actions/game";
+import { getWinningPlayer } from "../helpers/winningPlayer";
 
 class Game extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      player1Points: 0,
-      player2Points: 0,
-      winner: null,
-      nextServeCounter: 1, // counts to 5, then resets to 1 
-      toServe: 1
-    };
-  }
-
-  findWinner(p1 = this.state.player1Points, p2 = this.state.player2Points) {
-    if (p1 >= 21 && p2 <= p1 - 2) {
-      this.setState({ winner: 1 });
+  componentDidMount = () => {
+    const { players, history, endGame } = this.props;
+    if (!players.every(player => player.id)) {
+      endGame();
+      history.replace("/");
     }
-    if (p2 >= 21 && p1 <= p2 - 2) {
-      this.setState({ winner: 2 });
-    }
-  }
+  };
 
+  downgradeWinner = () => {
+    const { players, winningPlayer, setPlayerScore } = this.props;
+    // First we need to get the index of the winning player
+    const winningPlayerIndex = players.map(player => player.id).indexOf(winningPlayer[0].id);
+    // We need to go 2 serves back, because
+    // setPlayerScore will automatically
+    // increment the serves by 1. We want
+    // ultimately to be 1 serve back.
+    setServe(-2);
+    setPlayerScore(winningPlayerIndex, -1);
+  };
 
-findNextServe(){
-  if(this.state.nextServeCounter !== 5){
-    this.setState({nextServeCounter: this.state.nextServeCounter +1})
-  } else {
-    this.setState({nextServeCounter: 1 }, () => this.swapServes())
-  }
-  
-
-}
-
-  swapServes() {
-    this.state.toServe === 1 ? this.setState({ toServe: 2 }) : this.setState({ toServe: 1 });
-  }
-
-  scoreButtonClick() { //handles all the click methods 
-    console.log(`the next person to serve is ${this.state.toServe}`);
-
-    this.findNextServe()
-    this.findWinner();
-  }
+  finishGameAndSendResultToLeaderboard = () => {
+    this.props.endGame();
+    this.props.sendMatchToLeaderboard();
+  };
 
   render() {
-    const { player1Points, player2Points } = this.state;
-
-    if (!this.state.winner) {
-      return (
-        <div>
-          <div className="left">
-            <Player
-              points={player1Points}
-              onScoreIncremented={() =>
-                this.setState({ player1Points: player1Points + 1 }, () => {
-                  this.scoreButtonClick();
-                })
-              }
-            />
-          </div>
-          <div className="right">
-            <Player
-              points={player2Points}
-              onScoreIncremented={() =>
-                this.setState({ player2Points: player2Points + 1 }, () => {
-                  this.scoreButtonClick();
-                })
-              }
-            />
-          </div>
-          <button onClick={() => console.log(this.state)}>show me state</button>
-          <h1>the next person to serve is player {this.state.toServe} </h1>
+    const { winningPlayer, players, setPlayerScore, currentServer, inProgress } = this.props;
+    const displayedPlayers = winningPlayer && !inProgress ? winningPlayer : players;
+    return (
+      <div>
+        <div style={{ display: "flex", flexDirection: "row" }}>
+          {displayedPlayers.map((player, index) => (
+            <section key={player._id || index}>
+              <figure>
+                <img src={player.slack_image} alt={player.id} />
+                <figcaption>{player.name}</figcaption>
+              </figure>
+              {winningPlayer ? (
+                winningPlayer[0].id === player.id ? (
+                  "WON"
+                ) : (
+                  "LOST"
+                )
+              ) : (
+                <div>
+                  <button
+                    onClick={() => {
+                      setPlayerScore(index, 1);
+                    }}
+                  >
+                    +
+                  </button>
+                  <button
+                    disabled={player.score === 0}
+                    onClick={() => {
+                      setPlayerScore(index, -1);
+                    }}
+                  >
+                    -
+                  </button>
+                </div>
+              )}
+              <div>Score: {player.score}</div>
+              {currentServer === index && !winningPlayer && <div>Serving</div>}
+            </section>
+          ))}
         </div>
-      );
-    } else return <div> the winner is player {this.state.winner}</div>;
+        {!!winningPlayer && inProgress ? (
+          <div>
+            Someone has won. End game?
+            <button onClick={this.finishGameAndSendResultToLeaderboard}>End game</button>
+            <button onClick={this.downgradeWinner}>Whoops! Nobody won</button>
+          </div>
+        ) : null}
+      </div>
+    );
   }
 }
 
-export default Game;
+Game.propTypes = {
+  players: PropTypes.arrayOf(PropTypes.shape({})),
+  winningPlayer: PropTypes.arrayOf(PropTypes.shape({})),
+  history: PropTypes.shape({}).isRequired,
+  setPlayerScore: PropTypes.func.isRequired,
+  currentServer: PropTypes.number.isRequired,
+};
 
-/* <Paddle direction = 'paddle-pic-right'/> */
+const mapStateToProps = state => {
+  const players = state.game.players.map(player => ({
+    ...state.users.users.find(user => user._id === player.id),
+    ...player,
+  }));
+  return {
+    players,
+    currentServer: state.game.currentServer,
+    inProgress: state.game.inProgress,
+    winningPlayer: getWinningPlayer(players),
+  };
+};
+
+const mapDispatchToProps = {
+  setPlayerScore,
+  endGame,
+  sendMatchToLeaderboard,
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(Game)
+);
