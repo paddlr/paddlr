@@ -1,5 +1,5 @@
-var ScoreLogic =  require('/Users/apple/Documents/Makers/paddlr/backend/models/scoreLogic.js'); //remember to change the scoreLogic path
-var Users =  require('/Users/apple/Documents/Makers/paddlr/backend/models/users.js'); //remember to change the Users paths.
+var ScoreLogic =  require('../../models/scoreLogic.js'); //remember to change the scoreLogic path
+var Users =  require('../../models/users.js'); //remember to change the Users paths.
 var sinon = require("sinon");
 var assert = require("assert");
 
