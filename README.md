@@ -18,7 +18,7 @@ As this was our final project at Maker's Academy, we decided to pay tribute to i
 ## Demo
 (To be added)
 
-Slack Integration with Smack Talk in the Channel:
+Slack Integration with Smack Talk in the Channel:  
 ![Slack Smack Talk](./docs/images/SlackSmackTalk.jpeg)
 
 ## Quickstart
