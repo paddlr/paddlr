@@ -8,6 +8,7 @@ import {
   declareWinner,
   setServeCount,
   setServingPlayer,
+  endGame,
 } from "../redux/actions/game.actions";
 
 class Game extends Component {
@@ -33,6 +34,15 @@ class Game extends Component {
     // the serve count has decreased
     const shouldSwapSubtractedPlayers =
       shouldSwapSubtractedPlayersUnder20 || shouldSwapSubtractedPlayersOver20;
+    // If the players' scores differ from their
+    // previous values, we need to see whether
+    // either of them has won or shouldn't win.
+    if (
+      prevProps.player1Score !== this.props.player1Score ||
+      prevProps.player2Score !== this.props.player2Score
+    ) {
+      this.findWinner();
+    }
     // If one of the players' scores is higher
     // than it used to be, find out if there's
     // a winner, and determine who's serving next.
@@ -40,16 +50,13 @@ class Game extends Component {
       prevProps.player1Score < this.props.player1Score ||
       prevProps.player2Score < this.props.player2Score
     ) {
-      this.findWinner();
       this.findNextServe();
     }
     // If the serve count is reduced, find out
     // if the last serve changed who was serving
     // and, if it did, swap back to the previous
-    // server. Also check to see if there's a
-    // winner (will set as undefined if not).
+    // server.
     if (hasSubtractedServeCount && shouldSwapSubtractedPlayers) {
-      this.findWinner();
       this.changeServingPlayer();
     }
   }
@@ -77,6 +84,64 @@ class Game extends Component {
     }
   }
 
+  incrementPlayer1Score = () => {
+    this.props.setServeCount(this.props.serveCount + 1);
+    this.props.setPlayer1Score(this.props.player1Score + 1);
+  };
+
+  decrementPlayer1Score = () => {
+    if (this.props.player1Score > 0) {
+      this.props.setServeCount(this.props.serveCount - 1);
+      this.props.setPlayer1Score(this.props.player1Score - 1);
+    }
+  };
+
+  incrementPlayer2Score = () => {
+    this.props.setServeCount(this.props.serveCount + 1);
+    this.props.setPlayer2Score(this.props.player2Score + 1);
+  };
+
+  decrementPlayer2Score = () => {
+    if (this.props.player2Score > 0) {
+      this.props.setServeCount(this.props.serveCount - 1);
+      this.props.setPlayer2Score(this.props.player2Score - 1);
+    }
+  };
+
+  decreaseWinningScore = () => {
+    if (this.props.winningPlayer === this.props.player1ID) {
+      this.decrementPlayer1Score();
+    } else {
+      this.decrementPlayer2Score();
+    }
+  };
+
+  sendFinalResultAndEndGame = () => {
+    fetch("https://paddlr-test.herokuapp.com/api/games", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        players: [
+          {
+            player_id: this.props.player1ID,
+            player_score: this.props.player1Score,
+          },
+          {
+            player_id: this.props.player2ID,
+            player_score: this.props.player2Score,
+          },
+        ],
+      }),
+    })
+      .then(response => response.json())
+      .then(response => {
+        console.log("Game saved", response);
+        this.props.endGame();
+      });
+  };
+
   render() {
     const {
       inProgress,
@@ -87,11 +152,7 @@ class Game extends Component {
       player1Score,
       player2Score,
       winningPlayer,
-      servingPlayer,
-      setPlayer1Score,
-      setPlayer2Score,
-      serveCount,
-      setServeCount,
+      whichPlayerIsServing,
     } = this.props;
     return player1 && player2 ? (
       <div>
@@ -99,41 +160,30 @@ class Game extends Component {
           <Player
             player={player1}
             points={player1Score}
-            onScoreIncremented={() => {
-              setServeCount(serveCount + 1);
-              setPlayer1Score(player1Score + 1);
-            }}
-            onScoreDecremented={
-              player1Score === 0
-                ? undefined
-                : () => {
-                    setServeCount(serveCount - 1);
-                    setPlayer1Score(player1Score - 1);
-                  }
-            }
-            hasWon={player1ID === winningPlayer}
+            onScoreIncremented={this.incrementPlayer1Score}
+            onScoreDecremented={this.decrementPlayer1Score}
+            shouldShowButtons={!winningPlayer}
+            isServing={whichPlayerIsServing === player1ID}
           />
         </div>
         <div className="right">
           <Player
             player={player2}
             points={player2Score}
-            onScoreIncremented={() => {
-              setServeCount(serveCount + 1);
-              setPlayer2Score(player2Score + 1);
-            }}
-            onScoreDecremented={
-              player2Score === 0
-                ? undefined
-                : () => {
-                    setServeCount(serveCount - 1);
-                    setPlayer2Score(player2Score - 1);
-                  }
-            }
-            hasWon={player2ID === winningPlayer}
+            onScoreIncremented={this.incrementPlayer2Score}
+            onScoreDecremented={this.decrementPlayer2Score}
+            shouldShowButtons={!winningPlayer}
+            isServing={whichPlayerIsServing === player2ID}
           />
         </div>
-        {servingPlayer && <h1>{servingPlayer.name} is serving</h1>}
+        {winningPlayer &&
+          inProgress && (
+            <div>
+              Are you sure this is the final result?
+              <button onClick={this.sendFinalResultAndEndGame}>Yes</button>
+              <button onClick={this.decreaseWinningScore}>No</button>
+            </div>
+          )}
       </div>
     ) : null;
   }
@@ -156,7 +206,6 @@ const mapStateToProps = state => {
     player2Score: state.game.player2Score,
     winningPlayer: state.game.winningPlayer,
     serveCount: state.game.serveCount,
-    servingPlayer: players.find(player => player._id === whichPlayerIsServing),
   };
 };
 
@@ -166,7 +215,10 @@ const mapDispatchToProps = {
   declareWinner: declareWinner,
   setServeCount: setServeCount,
   setServingPlayer: setServingPlayer,
+  endGame: endGame,
 };
+
+export { Game };
 
 export default withRouter(
   connect(

@@ -16,11 +16,13 @@ class Leaderboard extends Component {
       <div className="container">
         <table>
           <thead>
-            <th>Ranking</th>
-            <th />
-            <th>Name</th>
-            <th>Won</th>
-            <th>Lost</th>
+            <tr>
+              <th>Ranking</th>
+              <th />
+              <th>Name</th>
+              <th>Won</th>
+              <th>Lost</th>
+            </tr>
           </thead>
           <tbody>
             {sortByTotalScore(players).map((player, index) => (
