@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-var Usersschema = new Schema({
+const Usersschema = new Schema({
 
   name:{
     type: String,
@@ -45,7 +45,7 @@ var Usersschema = new Schema({
   total_score: {
     type: Number,
     default: 0
-  },
+  }
 
 });
 

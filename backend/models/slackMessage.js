@@ -1,7 +1,14 @@
 const request = require("request");
 
+var smackTalk = [" into submission!", " squarely!", " resoundedly!", " again!", 
+                " without raising a sweat.", " and showed no mercy!"];
+
 function SlackMessage(){
 
+}
+
+function getSmack(){
+  return smackTalk[Math.floor(Math.random() * smackTalk.length)];
 }
 
 SlackMessage.prototype.postMessage = function(winner, loser){
@@ -13,10 +20,10 @@ SlackMessage.prototype.postMessage = function(winner, loser){
      },
       json: true,
       body: {
-    "text": winner + " beats " + loser + " into submission"
+    "text": winner + " beats " + loser + getSmack()
     }
-  }, function (error, response, body){
-      console.log('Response: ', response);
+  }, function (error, response){
+      return response;
       
   });
 }

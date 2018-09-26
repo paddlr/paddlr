@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const Schema = mongoose.Schema;
 
-var PlayersSchema = new Schema({
+const PlayersSchema = new Schema({
 
   player_id:{
     type: String,
