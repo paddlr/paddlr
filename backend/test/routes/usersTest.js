@@ -29,6 +29,28 @@ describe('API User routes', function(){
               done(err);
           });
     });
+
+
+    it('gets a user by its id', function(){
+      request.get('/api/users')
+        .expect(200)
+        .then(function(users){
+          var singlePlayerId = users.body[0]._id;
+          console.log("this is the id: ", singleUserId)
+          return singleUserId;
+        })
+        .catch(function(err){
+          console.log(err);
+        })
+        .then(function(singleUser){
+          request.get('/api/' + singleUser)
+            .expect(200);
+            console.log("This user has an id of " + singleGame);
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+    });
   });
 
 
