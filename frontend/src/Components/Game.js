@@ -109,5 +109,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Game);
-
-/* <Paddle direction = 'paddle-pic-right'/> */

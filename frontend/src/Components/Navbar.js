@@ -25,7 +25,7 @@ class Navbar extends Component {
                 </Link>
               </li>
               <li>
-                <Link to="/leaderboards" className="menu-item">
+                <Link to="/leaderboard" className="menu-item">
                   LEADERBOARDS
                 </Link>
               </li>
