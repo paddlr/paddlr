@@ -7,9 +7,11 @@ const NavLink = ({ to, disabledLink, children }) =>
     <button id="game" disabled>{children}</button>
   ) : (
     <Link to={to}>
-      <button id="play">{children}</button> //NEED TO EDIT THIS ID
+      <button id="play">{children}</button>
     </Link>
   );
+
+  //Amend this id^^^^^^
 
 NavLink.defaultProps = {
   disabledLink: false,
