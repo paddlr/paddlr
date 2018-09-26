@@ -67,12 +67,5 @@ it("updateLoserInfo can be called takes an argument", function(){
   assert("player 2", spyCall.args[0]);
 })
 
-it("updateLoserInfo can be called takes an argument", function(){
-  var spy = sinon.spy(users, "updateOne");
-  users.updateOne("player 2", "cheese", function(){
-  });
-  var spyCall = users.updateOne.getCall(2);
-  assert("player 2", spyCall.args[2]);
-})
 
 });
