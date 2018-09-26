@@ -1,7 +1,14 @@
 import React, { Component } from "react";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router } from "react-router-dom";
+
+import store from "../redux/store";
+
+import Routes from "./Routes";
+
 import "../App.css";
-import Navbar from './Navbar';
-import Game from './Game';
+// import Navbar from "./Navbar";
+// import Game from "./Game";
 
 class App extends Component {
   constructor(props) {
@@ -11,16 +18,12 @@ class App extends Component {
     };
   }
   render() {
-    if(this.state.view == 'game'){   //if the state is game it returns our game component
-    return (   //buttons in the navbar component should  update the state of app. rather than it just being a huge button at the bottom :)
-      <div>
-        <Navbar />
-        <Game />
-
-        {/* <button onClick ={ () => {this.setState({view: 'leaderboard'})}} className = "score_button" >show me the leaderboard</button>   */}
-
-          </div>
-
+    return (
+      <Provider store={store}>
+        <Router>
+          <Routes />
+        </Router>
+      </Provider>
     );
 
     } else if(this.state.view == 'leaderboard'){ //table should be it's own component, but just as an example
@@ -56,3 +59,6 @@ class App extends Component {
 }
 
 export default App;
+
+// <Navbar />
+// <Game />
