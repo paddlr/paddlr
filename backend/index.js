@@ -28,6 +28,7 @@ mongoose.connect(connectionString,  { useNewUrlParser: true })
 
 // API calls
   app.use(bodyParser.json());
+  app.use(express.urlencoded({ extended: true }));
   app.use('/api/users', userRoutes);
   app.use('/api/games', gameRoutes);
   app.use('/api/slack', slackRoutes);
