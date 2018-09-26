@@ -30,16 +30,16 @@ class StartGame extends Component {
           const user = users.find(user => user._id === player.id);
           return (
             <div key={index}>
-              <h3>
+              <h3 id={"head"+index}>
                 {index === 0 ? "Server" : "Challenger"}
                 {user && `: ${user.name}`}
               </h3>
-              <figure
+              <figure id={"pic"+index}
                 style={{ display: "block", width: 64, height: 64, backgroundColor: "lightgrey" }}
               >
                 {user && <img width={64} src={user.slack_image} alt={user.name} />}
               </figure>
-              <select value={player.id || ""} onChange={this.onSelectOption(index)}>
+              <select value={player.id || ""} onChange={this.onSelectOption(index)} id={"player_selector"+index}>
                 <option>Select Player</option>
                 {users.map(user => (
                   <option
@@ -55,7 +55,7 @@ class StartGame extends Component {
           );
         })}
         <div>
-          <button disabled={!players.every(player => player.id)} onClick={this.startGame}>
+          <button id="start_game_button" disabled={!players.every(player => player.id)} onClick={this.startGame}>
             Start Game
           </button>
         </div>

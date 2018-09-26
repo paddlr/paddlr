@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 const NavLink = ({ to, disabledLink, children }) =>
   disabledLink ? (
-    <button disabled>{children}</button>
+    <button id="game" disabled>{children}</button>
   ) : (
     <Link to={to}>
-      <button>{children}</button>
+      <button id="play">{children}</button> //NEED TO EDIT THIS ID
     </Link>
   );
 
