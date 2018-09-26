@@ -39,7 +39,7 @@ class StartGame extends Component {
               >
                 {user && <img width={64} src={user.slack_image} alt={user.name} />}
               </figure>
-              <select value={player.id || ""} onChange={this.onSelectOption(index)}>
+              <select value={player.id || ""} onChange={this.onSelectOption(index)} id ={"player_selector" + index}  >
                 <option>Select Player</option>
                 {users.map(user => (
                   <option
@@ -55,7 +55,7 @@ class StartGame extends Component {
           );
         })}
         <div>
-          <button disabled={!players.every(player => player.id)} onClick={this.startGame}>
+          <button id = "start_game_button" disabled={!players.every(player => player.id)} onClick={this.startGame}>
             Start Game
           </button>
         </div>
