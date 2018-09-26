@@ -2,14 +2,11 @@ import React, { Component } from "react";
 
 class PlayerPic extends Component {
   render() {
+    const { src, alt } = this.props;
     return (
       <div>
         <button className="player-button">
-          <img
-            className="player-pic"
-            src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537275284/EdT_jg1gfi.jpg"
-            alt="player one"
-          />
+          <img className="player-pic" src={src} alt={alt} />
         </button>
       </div>
     );

@@ -7,11 +7,12 @@ export const SET_PLAYER_2_SCORE = "SET_PLAYER_2_SCORE";
 export const SET_SERVE_COUNT = "SET_SERVE_COUNT";
 export const SET_SERVING_PLAYER = "SET_SERVING_PLAYER";
 export const DECLARE_WINNER = "DECLARE_WINNER";
+export const RESET_GAME = "RESET_GAME";
 
 const initialState = {
   inProgress: false,
-  player1ID: "foo",
-  player2ID: "bar",
+  player1ID: undefined,
+  player2ID: undefined,
   player1Score: 0,
   player2Score: 0,
   winningPlayer: undefined,
@@ -25,6 +26,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, inProgress: true };
     case END_GAME:
       return { ...state, inProgress: false };
+    case RESET_GAME:
+      return initialState;
     case SET_PLAYER_1_ID:
       return { ...state, player1ID: action.player1ID };
     case SET_PLAYER_2_ID:

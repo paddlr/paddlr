@@ -8,6 +8,7 @@ import {
   SET_SERVE_COUNT,
   SET_SERVING_PLAYER,
   DECLARE_WINNER,
+  RESET_GAME,
 } from "../reducers/game.reducer";
 
 export const startGame = () => {
@@ -16,6 +17,10 @@ export const startGame = () => {
 
 export const endGame = () => {
   return { type: END_GAME };
+};
+
+export const resetGame = () => {
+  return { type: RESET_GAME };
 };
 
 export const setPlayer1ID = player1ID => {
