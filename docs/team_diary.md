@@ -24,3 +24,11 @@ I am pondering on our Heroku deployment which is succesfully displaying our api 
 
 ### Day 5
 Back-End: I carried on with last nights frustrations for literally hours. Hours and hours! Finally attaining some level of success by mid-afternoon when I finally got the React app rendering on Heroku while similataneously allowing access to our API. In the time it took me to do that tiny task, Steph and Ed had cracked the Slack API and imported all our potential players into the users DB...
+
+### Day 6
+
+Front-End: During the weekend, the frontend team had issues with managing states and the passing of information. After thorough research, Dani proposed the use of Redux as a solution to these woes. She successfully created a simple experimental mockup of the app that uses redux and proposed its use to the rest of team.
+
+More work was covered over the weekend - this included the scoring logic, generating the leaderboard and switching the paddles to show the server. For the first half of Monday, tensions were really high as some members adamantly disapprove of the use of redux even after a team consensus to use the library to build the interface. This led to a fairly unproductive day for the frontend.
+
+On the backend, however, things were working beautifully. During the weekend, Angela fixed the slack integration, API and adjusted the connection settings to work with dotenv.Stephanie didn't do much over the weekend because it was her birthday! However, on Monday, She wrote the scoring logic that figured out the winner of a match. The code also increased each player's points, games won and games lost for every player in a match. She then integrated this with the database and caused player statistics to automatically load with each game. It was a good day for the backend
