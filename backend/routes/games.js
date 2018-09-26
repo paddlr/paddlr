@@ -15,8 +15,6 @@ router.get("/", function(req, res, next){
   .catch(next)
 });
 
-router.post("/", function(req, res, next){
-
 router.post("/", async(req, res) => {
   const player_1 = await Users.findOne({_id: req.body.players[0].player_id});
   const player_2 = await Users.findOne({_id: req.body.players[1].player_id});
