@@ -29,7 +29,7 @@ Slack Integration with Smack Talk in the Channel:
 4. To run tests you need to cd into the relevant folder and run `npm run test`
 5. To start the local server cd into frontend and run `npm start`
 6. You can also test the hosted app on [paddlr.live](http://paddlr.live)
-7. In order to see the Slack integration with the message sending feature you would need to join the [paddlr slack channel](https://join.slack.com/t/paddlr-live/shared_invite/enQtNDQwMDA5NTcyNDgxLTQ3YmFjM2VlNDgwOTJkNGVmOTRkMzQ0YWFjNTJhMzY1Y2M1MWYyNDRkOTRjYTgwZWQ2YmU2YTVjNGEwNmI0YWQ) 
+7. In order to see the Slack integration with the message sending feature you would need to join the [paddlr slack channel](https://join.slack.com/t/paddlr-live/shared_invite/enQtNDQwMDA5NTcyNDgxLTQ3YmFjM2VlNDgwOTJkNGVmOTRkMzQ0YWFjNTJhMzY1Y2M1MWYyNDRkOTRjYTgwZWQ2YmU2YTVjNGEwNmI0YWQ) you will need to join the matchresults channel, which is hidden initially.
 
 ## Work Flow - Tickets
 [Trello](https://trello.com/b/yJJBQTt1/team-paddlr)
