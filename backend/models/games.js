@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const {PlayersSchema} = require("./players")
 const Schema = mongoose.Schema;
 
-var Gamesschema = new Schema({
+const Gamesschema = new Schema({
   game_type:{
     type: String,
     default: "leaderboard",

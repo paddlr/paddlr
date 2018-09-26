@@ -2,7 +2,7 @@ const fetch = require("node-fetch");
 const Url = "https://slack.com/api/users.list";
 
 const Database = require("../models/databaseIntegration");
-var database = new Database();
+let database = new Database();
 
 function SlackUsers(){
 
@@ -27,7 +27,7 @@ SlackUsers.prototype.getUsers = function(input){
       return response;
     })
     .catch(function(err){
-      console.log(err);
+      return err;
     })
 }
 
