@@ -3,11 +3,15 @@ const Users = require('../models/users');
 const _ = require('lodash');
 
 function Database(){
+  this.newUsers = [];
+}
 
+Database.prototype.getNewUsers = function(){
+  return this.newUsers;
 }
 
 Database.prototype.integration = async (slack_data) => {
-  let newUsers = [];
+  // let newUsers = [];
 
   for (let i = 0; i < slack_data.members.length; i++) {
     const user = await Users.findOne({slack_id: slack_data.members[i].id});
@@ -23,7 +27,7 @@ Database.prototype.integration = async (slack_data) => {
     };
   }
 
-  const newSlackUsers = await Users.insertMany(newUsers);
+  const newSlackUsers = await Users.insertMany(this.newUsers);
   console.log('New users created ', newSlackUsers);
 }
 
