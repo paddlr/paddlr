@@ -1,5 +1,3 @@
-import { savePlayers } from "../actions/players.actions";
-
 export const SAVE_PLAYERS = "SAVE_PLAYERS";
 
 const initialState = { playerList: [] };

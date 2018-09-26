@@ -10,22 +10,13 @@ export const DECLARE_WINNER = "DECLARE_WINNER";
 
 const initialState = {
   inProgress: false,
-  player1ID: undefined,
-  player2ID: undefined,
+  player1ID: "foo",
+  player2ID: "bar",
   player1Score: 0,
   player2Score: 0,
   winningPlayer: undefined,
   serveCount: 0,
-  whichPlayerIsServing: 1,
-};
-
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case SAVE_PLAYERS:
-      return { ...state, playerList: action.playerList };
-    default:
-      return state;
-  }
+  whichPlayerIsServing: undefined,
 };
 
 const reducer = (state = initialState, action) => {
@@ -48,6 +39,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, whichPlayerIsServing: action.whichPlayerIsServing };
     case DECLARE_WINNER:
       return { ...state, winningPlayer: action.winningPlayer };
+    default:
+      return state;
   }
 };
 

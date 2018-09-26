@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 class Navbar extends Component {
   render() {
@@ -7,34 +8,28 @@ class Navbar extends Component {
         <nav className="navbar navbar-inverse navbar-fixed-top">
           <div className="collapse navbar-collapse" id="navbar-collapse">
             <ul className="nav navbar-nav navbar-right">
-              <button type="button" className="paddle-button">
-                <img
-                  className="paddle-logo"
-                  src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"
-                  alt="app logo"
-                />
-              </button>
-              <div className="menu-items">
-                <li>
-                  <a className="menu-item">PLAY</a>
-                </li>
-                <li>
-                  <a className="menu-item">TOURNAMENTS</a>
-                </li>
-                <li>
-                  <a className="menu-item">LEADERBOARDS</a>
-                </li>
-                <li>
-                  <a className="menu-item">LOGOUT</a>
-                </li>
-              </div>
-              <button type="button" className="profile-button">
-                <img
-                  className="profile-pic"
-                  src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537268860/angela-profile-image_cyhzx7.jpg"
-                  alt="profile pic"
-                />
-              </button>
+              <img
+                className="paddle-logo"
+                src="https://res.cloudinary.com/dani-devs-and-designs/image/upload/v1537263060/image_pr1hqh.png"
+                alt="app logo"
+              />
+              {/* <div className="menu-items"> */}
+              <li>
+                <Link to="/" className="menu-item">
+                  PLAY
+                </Link>
+              </li>
+              <li>
+                <Link to="/game" className="menu-item">
+                  GAME
+                </Link>
+              </li>
+              <li>
+                <Link to="/leaderboards" className="menu-item">
+                  LEADERBOARDS
+                </Link>
+              </li>
+              {/* </div> */}
             </ul>
           </div>
         </nav>

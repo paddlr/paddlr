@@ -1,83 +1,113 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import Player from "./Player";
+import {
+  setPlayer1Score,
+  setPlayer2Score,
+  declareWinner,
+  setServeCount,
+  setServingPlayer,
+} from "../redux/actions/game.actions";
 
 class Game extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      player1Points: 0,
-      player2Points: 0,
-      winner: null,
-      nextServeCounter: 1, // counts to 5, then resets to 1 
-      toServe: 1
-    };
+  componentDidMount() {
+    this.props.setServingPlayer(this.props.player1ID);
   }
 
-  findWinner(p1 = this.state.player1Points, p2 = this.state.player2Points) {
-    if (p1 >= 21 && p2 <= p1 - 2) {
-      this.setState({ winner: 1 });
-    }
-    if (p2 >= 21 && p1 <= p2 - 2) {
-      this.setState({ winner: 2 });
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.player1Score !== this.props.player1Score ||
+      prevProps.player2Score !== this.props.player2Score
+    ) {
+      this.findWinner();
+      this.findNextServe();
     }
   }
 
-
-findNextServe(){
-  if(this.state.nextServeCounter !== 5){
-    this.setState({nextServeCounter: this.state.nextServeCounter +1})
-  } else {
-    this.setState({nextServeCounter: 1 }, () => this.swapServes())
-  }
-  
-
-}
-
-  swapServes() {
-    this.state.toServe === 1 ? this.setState({ toServe: 2 }) : this.setState({ toServe: 1 });
+  findWinner() {
+    const { player1Score, player2Score, player1ID, player2ID, declareWinner } = this.props;
+    if (player1Score >= 21 && player2Score <= player1Score - 2) {
+      declareWinner(player1ID);
+    }
+    if (player2Score >= 21 && player1Score <= player2Score - 2) {
+      declareWinner(player2ID);
+    }
   }
 
-  scoreButtonClick() { //handles all the click methods 
-    console.log(`the next person to serve is ${this.state.toServe}`);
+  changeServingPlayer() {
+    const { setServingPlayer, whichPlayerIsServing, player1ID, player2ID } = this.props;
+    setServingPlayer(whichPlayerIsServing === player1ID ? player2ID : player1ID);
+  }
 
-    this.findNextServe()
-    this.findWinner();
+  findNextServe() {
+    const { player1Score, player2Score, serveCount, setServeCount } = this.props;
+    const currentServeCount = serveCount + 1;
+    if ((player1Score >= 20 && player2Score >= 20) || currentServeCount % 5 === 0) {
+      this.changeServingPlayer();
+    }
+    setServeCount(currentServeCount);
   }
 
   render() {
-    const { player1Points, player2Points } = this.state;
+    const {
+      inProgress,
+      player1ID,
+      player2ID,
+      player1Score,
+      player2Score,
+      winningPlayer,
+      whichPlayerIsServing,
+      setPlayer1Score,
+      setPlayer2Score,
+    } = this.props;
 
-    if (!this.state.winner) {
+    if (!winningPlayer) {
       return (
         <div>
           <div className="left">
             <Player
-              points={player1Points}
-              onScoreIncremented={() =>
-                this.setState({ player1Points: player1Points + 1 }, () => {
-                  this.scoreButtonClick();
-                })
-              }
+              points={player1Score}
+              onScoreIncremented={() => setPlayer1Score(player1Score + 1)}
             />
           </div>
           <div className="right">
             <Player
-              points={player2Points}
-              onScoreIncremented={() =>
-                this.setState({ player2Points: player2Points + 1 }, () => {
-                  this.scoreButtonClick();
-                })
-              }
+              points={player2Score}
+              onScoreIncremented={() => setPlayer2Score(player2Score + 1)}
             />
           </div>
-          <button onClick={() => console.log(this.state)}>show me state</button>
-          <h1>the next person to serve is player {this.state.toServe} </h1>
+          <h1>the next person to serve is player {whichPlayerIsServing || player1ID} </h1>
         </div>
       );
-    } else return <div> the winner is player {this.state.winner}</div>;
+    }
+    return <div> the winner is player {winningPlayer}</div>;
   }
 }
 
-export default Game;
+const mapStateToProps = state => {
+  return {
+    inProgress: state.game.inProgress,
+    player1ID: state.game.player1ID,
+    player2ID: state.game.player2ID,
+    player1Score: state.game.player1Score,
+    player2Score: state.game.player2Score,
+    winningPlayer: state.game.winningPlayer,
+    serveCount: state.game.serveCount,
+    whichPlayerIsServing: state.game.whichPlayerIsServing,
+  };
+};
+
+const mapDispatchToProps = {
+  setPlayer1Score: setPlayer1Score,
+  setPlayer2Score: setPlayer2Score,
+  declareWinner: declareWinner,
+  setServeCount: setServeCount,
+  setServingPlayer: setServingPlayer,
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Game);
 
 /* <Paddle direction = 'paddle-pic-right'/> */

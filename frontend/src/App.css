@@ -2,7 +2,6 @@
 *.before,
 *.after {
   box-sizing: border-box;
-  -moz-box-sizing: border-box;
 }
 
 html,
@@ -22,7 +21,7 @@ body {
   padding: 0;
 }
 
-/* .nav,
+.nav,
 .navbar-nav,
 .navbar-right {
   display: inline-flex;
@@ -32,14 +31,14 @@ body {
   font-weight: 300;
   margin: 0;
   padding: 0;
-} */
+}
 
 .menu-items {
-  /* display: flex;
+  display: flex;
   flex-direction: row;
-  justify-content: center; */
+  justify-content: center;
   margin: auto;
-  /* padding: 3%; */
+  padding: 3%;
   width: 100%;
   font-family: "Open Sans", sans-serif;
   font-size: 2.5em;
@@ -48,7 +47,6 @@ body {
 
 li {
   padding: 5%;
-  /* margin-top: 50%; */
 }
 
 a,
@@ -166,7 +164,7 @@ ul,
   font-size: 1.2em;
 }
 
-.play_again_button{
+.play_again_button {
   background-color: #4caf50; /* Green */
   color: white;
   padding: 2% 10%;
@@ -202,16 +200,15 @@ ul,
   border-color: gold;
   border-width: 25px;
   display: block;
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.winner_header{
+.winner_header {
   padding-left: 40%;
-    margin-left: auto;
-    margin-right: auto;
-    color: goldenrod;
-
+  margin-left: auto;
+  margin-right: auto;
+  color: goldenrod;
 }
 
 @media only screen and (max-width: 1480px) {
@@ -231,15 +228,15 @@ ul,
   padding-left: 10%;
   padding-right: 10%;
   text-align: center;
-	height: auto;
+  height: auto;
 }
 
 .row {
-	position: relative;
-	display: block;
-	width: 100%;
-	height: 3em;
-	border-bottom: 1px solid #AFAFAF;
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 3em;
+  border-bottom: 1px solid #afafaf;
 }
 
 .rank {
@@ -249,16 +246,16 @@ ul,
 }
 
 .playername {
-	position: relative;
-	display: inline-block;
-	width: 40%;
-	line-height: 3em;
+  position: relative;
+  display: inline-block;
+  width: 40%;
+  line-height: 3em;
 }
 
 .score {
-	position: relative;
-	display: inline-block;
-	width: 25%;
+  position: relative;
+  display: inline-block;
+  width: 25%;
 }
 
 .winPercent {
