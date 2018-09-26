@@ -41,25 +41,29 @@ class Game extends Component {
           {displayedPlayers.map((player, index) => (
             <section key={player._id || index}>
               <figure>
-                <img src={player.slack_image} alt={player.id} />
-                <figcaption>{player.name}</figcaption>
+                <img id={"player_pic"+index} src={player.slack_image} alt={player.id} />
+                <figcaption id={"player_name"+index}>{player.name}</figcaption>
               </figure>
               {winningPlayer ? (
                 winningPlayer[0].id === player.id ? (
-                  "WON"
+                  <div id={"winner"}>
+                    WINNER
+                  </div>
                 ) : (
-                  "LOST"
+                  <div id={"loser"}>
+                    LOSER
+                  </div>
                 )
               ) : (
                 <div>
-                  <button
+                  <button id={"plus_id"+index}
                     onClick={() => {
                       setPlayerScore(index, 1);
                     }}
                   >
                     +
                   </button>
-                  <button
+                  <button id={"minus_id"+index}
                     disabled={player.score === 0}
                     onClick={() => {
                       setPlayerScore(index, -1);
@@ -69,16 +73,16 @@ class Game extends Component {
                   </button>
                 </div>
               )}
-              <div>Score: {player.score}</div>
-              {currentServer === index && !winningPlayer && <div>Serving</div>}
+              <div id={"score_id"+index}>Score: {player.score}</div>
+              {currentServer === index && !winningPlayer && <div id="serve">Serving</div>}
             </section>
           ))}
         </div>
         {!!winningPlayer && inProgress ? (
           <div>
             Someone has won. End game?
-            <button onClick={this.finishGameAndSendResultToLeaderboard}>End game</button>
-            <button onClick={this.downgradeWinner}>Whoops! Nobody won</button>
+            <button id="end_game" onClick={this.finishGameAndSendResultToLeaderboard}>End game</button>
+            <button id="dont_end_game" onClick={this.downgradeWinner}>Whoops! Nobody won</button>
           </div>
         ) : null}
       </div>
