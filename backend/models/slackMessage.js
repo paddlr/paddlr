@@ -5,7 +5,7 @@ function SlackMessage(){
 }
 
 var smackTalk = [" into submission!", " squarely!", " resoundedly!", " again!", 
-                " without raising a sweat."];
+                " without raising a sweat.", " and showed no mercy!"];
 
 function getSmack(){
   return smackTalk[Math.floor(Math.random() * smackTalk.length)];
