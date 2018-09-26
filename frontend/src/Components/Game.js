@@ -32,7 +32,6 @@ class Game extends Component {
     this.props.sendMatchToLeaderboard();
   };
 
-  // I think I need to add swapServes and/or setServe as props
   render() {
     const { winningPlayer, players, setPlayerScore, currentServer, inProgress } = this.props;
     const displayedPlayers = winningPlayer && !inProgress ? winningPlayer : players;
