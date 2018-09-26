@@ -70,11 +70,6 @@ class Game extends Component {
                 </div>
               )}
               <div>Score: {player.score}</div>
-              {/* This is my latest useless implementation `player.currentServer` 
-              which it can't read because I haven't given Game the incrementScore() prop
-              which dispatches the serving functions.
-              I'm just not sure if `setServe()` and `swapServe()` should be
-              props too - it feels like they should. */}
               {currentServer === index && !winningPlayer && <div>Serving</div>}
             </section>
           ))}
@@ -97,7 +92,6 @@ Game.propTypes = {
   history: PropTypes.shape({}).isRequired,
   setPlayerScore: PropTypes.func.isRequired,
   currentServer: PropTypes.number.isRequired,
-  // swapServes: Proptypes.func.isRequired,
 };
 
 const mapStateToProps = state => {
