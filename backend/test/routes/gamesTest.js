@@ -9,6 +9,28 @@ describe('API Games routes', function(){
           });
     });
 
+    it('gets a game by its id', function(){
+      request.get('/api/games')
+        .expect(200)
+        .then(function(games){
+          var singlePlayerId = games.body[0]._id;
+          console.log("this is the id: ", singleGameId)
+          return singleGameId;
+        })
+        .catch(function(err){
+          console.log(err);
+        })
+        .then(function(singleGame){
+          request.get('/api/' + singleGame)
+            .expect(200);
+            console.log("This game has an id of " + singleGame);
+
+        })
+        .catch(function(err){
+          console.log(err);
+        });
+    });
+
     it('cannot get a game that does not exist', function(done) {
       request.get('/api/games/icecream')
           .expect(422)

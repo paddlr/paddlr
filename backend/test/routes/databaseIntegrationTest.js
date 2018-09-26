@@ -28,8 +28,5 @@ describe('database Integration tests', function(){
   ]
 }
 
-it('hold user data within an array', function(){
-  expect(database.newUsers).to.be.an('array');
-});
 
 })
