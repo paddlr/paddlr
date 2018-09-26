@@ -1,27 +1,15 @@
 import React, { Component } from "react";
-import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
-
-import store from "../redux/store";
-
-import Routes from "./Routes";
-
 import "../App.css";
-
+import Navbar from './Navbar';
+import Game from './Game'; 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      view: 'game'
-    };
-  }
   render() {
     return (
-      <Provider store={store}>
-        <Router>
-          <Routes />
-        </Router>
-      </Provider>
+      <div>
+        <Navbar />
+        <Game/>
+
+          </div>
     );
   }
 }
