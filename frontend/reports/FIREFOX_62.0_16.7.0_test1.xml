@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="1"
+            tests="2">
+
+  <testsuite name="test1"
+    errors="0" failures="1" hostname="" id="" package="test1" skipped="1"
+    tests="2" time="5.360" timestamp="Wed, 26 Sep 2018 15:24:10 GMT">
+  
+    <testcase name="step one" classname="test1" time="5.360" assertions="2">
+
+      <failure message="Timed out while waiting for element &lt;button[name=btnG]&gt; to be visible for 1000 milliseconds.">    at Object.step one (/Users/timothyblanchard/Projects/Makers/paddlr/frontend/tests/test1.js:7:10)
+    at process._tickCallback (internal/process/next_tick.js:61:11)</failure>
+
+    
+    </testcase>
+  
+
+  
+
+  
+    
+    <testcase
+      name="step two" classname="test1">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
