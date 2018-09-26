@@ -1,27 +1,5 @@
 describe('API Games routes', function(){
 
-  before(function(done){
-    request.post('/api/games')
-       .send({
-        "game_type": "friendly",
-        "players": [
-            {
-                "player_id": "12",
-                "player_score": 9
-            },
-            {
-                "player_id": "1",
-                "player_score": 2
-            }
-        ]
-    })
-       .expect(200)
-       .end(function(err, res) {
-           done(err);
-       });
-  });
-
-
   describe('GET api/games', function(){
     it('returns a list of games', function(done) {
       request.get('/api/games')
@@ -39,52 +17,6 @@ describe('API Games routes', function(){
           });
     });
   })
-
-
-  describe('POST api/games', function(){
-    it('saves a new game', function(done) {
-      request.post('/api/games')
-         .send({
-          "game_type": "friendly",
-          "players": [
-              {
-                "player_id": "12",
-                "player_score": 21
-              },
-              {
-                "player_id": "2",
-                "player_score": 2
-              }
-          ]
-      })
-         .expect(200)
-         .end(function(err, res) {
-             done(err);
-         });
-     });
-
-     it('does not save an invalid game', function(done) {
-       request.post('/api/games')
-          .send({
-           "game_type": "friendly",
-           "players": [
-               {
-                "player_id": "3",
-                "player_score": "banana milk"
-               },
-               {
-                "player_id": "2",
-                "player_score": 20
-               }
-           ]
-       })
-       .expect(422)
-       .end(function(err, res) {
-         done(err);
-          });
-      });
-  });
-
 
 describe('DELETE api/games', function(){
   it('removes a game', function(){
