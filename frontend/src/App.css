@@ -30,7 +30,13 @@ body,
 input,
 select,
 button {
-  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+}
+
+select,
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 main {
@@ -85,7 +91,7 @@ nav a {
 
 .content-pane:before,
 .content-pane:after {
-  content: '';
+  content: "";
   display: block;
 }
 
@@ -204,8 +210,7 @@ nav a {
   text-transform: lowercase;
   background-color: #404040;
   box-shadow: 0 0.3rem 0.3rem rgba(0, 0, 0, 0.25);
-  transition: background-color 0.2s, color 0.2s,
-    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: background-color 0.2s, color 0.2s, transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   transform: scale(0.7);
 }
 
@@ -263,8 +268,8 @@ nav a {
   color: #262626;
   border: 0.5rem solid #007726;
   outline: 0;
-  transition: background-color 0.2s, color 0.2s,
-    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1), opacity 0.3s;
+  transition: background-color 0.2s, color 0.2s, transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    opacity 0.3s;
   transform: scale(0.8);
   cursor: pointer;
 }
@@ -318,7 +323,7 @@ nav a {
 }
 
 .ribbon > span:before {
-  content: '';
+  content: "";
   display: block;
   position: absolute;
   width: 3.5rem;
@@ -371,7 +376,7 @@ nav a {
   left: 50%;
   width: 6vw;
   height: 100%;
-  background-image: url('/net.svg');
+  background-image: url("/net.svg");
   background-repeat: no-repeat;
   background-size: 100% 100%;
   opacity: 0.175;
@@ -416,8 +421,7 @@ nav a {
   cursor: pointer;
   color: white;
   transform: scale(0.9);
-  transition: background-color 0.2s, color 0.2s,
-    transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition: background-color 0.2s, color 0.2s, transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
   outline: 0;
 }
 
