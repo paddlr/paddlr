@@ -66,4 +66,21 @@ describe("Feature tests", () => {
       });
     });
   });
+describe("Menu tests ", () => {
+
+  it("scoreboard shows when menu button is clicked", () => {
+    cy.get("#ranking_link").click();
+    cy.contains("Player").should("be.visible");
+    cy.contains("Won").should("be.visible");
+    cy.contains("Lost").should("be.visible");
+
+
+
+
+
+
+  })
+
+})
+
 });
