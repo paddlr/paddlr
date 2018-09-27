@@ -1,11 +1,11 @@
 describe('Select player', () => {
   it('choose from list of players', () => {
     cy.visit('/');
-    cy.get('#player_selector0').select('Edward Thomas');
-    cy.get('#player_selector1').select('Danielle');
+    cy.get('#select_server').select('Edward Thomas');
+    cy.get('#select_challenger').select('Danielle');
     cy.get('#start_game_button').click();
     for (var count=0; count < 21; count++) {
-      cy.get('#plus_id0').click();
+      cy.get('#plus_idE').click();
     }
     cy.get('#end_game').click();
     cy.contains('Edward Thomas').should('be.visible');

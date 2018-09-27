@@ -208,8 +208,8 @@ class Game extends Component {
           inProgress && (
             <div className="are-you-sure">
               <div>Finish game?</div>
-              <button onClick={this.decreaseWinningScore}>✗</button>
-              <button onClick={this.sendFinalResultAndEndGame}>✓</button>
+              <button id="dont_end_game" onClick={this.decreaseWinningScore}>✗</button>
+              <button id="end_game" onClick={this.sendFinalResultAndEndGame}>✓</button>
             </div>
           )}
       </div>

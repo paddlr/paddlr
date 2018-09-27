@@ -22,7 +22,7 @@ class Player extends Component {
         </div>
         <div className="treble">
           <div>
-            <button
+            <button id={"minus_id"+player.name[0]}
               class="score-button"
               disabled={!shouldShowButtons}
               onClick={onScoreDecremented}
@@ -34,7 +34,7 @@ class Player extends Component {
             <PlayerPic src={player.slack_image} alt={player.name} />
           </div>
           <div>
-            <button
+            <button id={"plus_id"+player.name[0]}
               class="score-button"
               disabled={!shouldShowButtons}
               onClick={onScoreIncremented}

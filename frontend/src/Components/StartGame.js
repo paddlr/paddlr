@@ -43,7 +43,7 @@ class StartGame extends Component {
                 alt={player1 ? player1.name : ''}
               />
             </figure>
-            <select value={player1ID || ''} onChange={this.selectPlayer1ID}>
+            <select id="select_server" value={player1ID || ''} onChange={this.selectPlayer1ID}>
               <option value="">First Serve</option>
               {players.map(player => (
                 <option
@@ -63,7 +63,7 @@ class StartGame extends Component {
                 alt={player2 ? player2.name : ''}
               />
             </figure>
-            <select value={player2ID || ''} onChange={this.selectPlayer2ID}>
+            <select id={"select_challenger"} value={player2ID || ''} onChange={this.selectPlayer2ID}>
               <option value="">Challenger</option>
               {players.map(player => (
                 <option
@@ -78,7 +78,7 @@ class StartGame extends Component {
           </div>
         </div>
         <div className="start-button">
-          <button disabled={!player1ID || !player2ID} onClick={this.startGame}>
+          <button id="start_game_button" disabled={!player1ID || !player2ID} onClick={this.startGame}>
             Start
           </button>
         </div>
