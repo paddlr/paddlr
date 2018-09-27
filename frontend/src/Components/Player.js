@@ -49,7 +49,7 @@ class Player extends Component {
               <div>
                 <Paddle scale={0.4} rubberColour="#CB5151" />
               </div>
-              <div>{isWinningPlayer ? 'Winner' : 'Now serving'}</div>
+              <div>{isWinningPlayer ? 'Winner!!' : 'Now serving'}</div>
             </div>
           ) : (
             <div className="subtitle">...</div>
