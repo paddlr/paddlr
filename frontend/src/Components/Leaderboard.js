@@ -1,51 +1,54 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPlayers } from '../redux/actions/players.actions';
 
-import { fetchUsers } from "../redux/actions/users";
+const sortByTotalScore = array =>
+  array.slice().sort((a, b) => (a.total_score > b.total_score ? -1 : 1));
 
 class Leaderboard extends Component {
-  componentDidMount = () => {
-    this.props.fetchUsers();
-  };
+  componentDidMount() {
+    this.props.fetchPlayers();
+  }
 
   render() {
-    const { users } = this.props;
+    const { players } = this.props;
     return (
-      <table>
-        <thead />
-        <tbody>
-          {users
-            .slice()
-            .sort((a, b) => (a.games_won > b.games_won ? -1 : 1))
-            .map(user => (
-              <tr key={user._id}>
+      <div className="leaderboard container">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th />
+              <th>Player</th>
+              <th>Won</th>
+              <th>Lost</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortByTotalScore(players).map((player, index) => (
+              <tr key={player._id}>
+                <td>{index + 1}</td>
                 <td>
-                  <img width={32} src={user.slack_image} alt={user.name} />
+                  <img src={player.slack_image} alt={player.name} />
                 </td>
-                <td>{user.name}</td>
-                <td>{user.games_won}</td>
-                <td>{user.games_lost}</td>
-                <td>{user.total_score}</td>
+                <td>{player.name}</td>
+                <td>{player.games_won}</td>
+                <td>{player.games_lost}</td>
               </tr>
             ))}
-        </tbody>
-      </table>
+          </tbody>
+        </table>
+      </div>
     );
   }
 }
 
-Leaderboard.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  fetchUsers: PropTypes.func.isRequired,
+const mapStateToProps = state => {
+  return { players: state.players.playerList };
 };
 
-const mapStateToProps = state => ({
-  users: state.users.users,
-});
-
 const mapDispatchToProps = {
-  fetchUsers,
+  fetchPlayers: fetchPlayers,
 };
 
 export default connect(

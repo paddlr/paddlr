@@ -1,62 +1,85 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { withRouter } from "react-router-dom";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { fetchPlayers } from '../redux/actions/players.actions';
+import {
+  setPlayer1ID,
+  setPlayer2ID,
+  startGame,
+  resetGame,
+} from '../redux/actions/game.actions';
 
-import { fetchUsers } from "../redux/actions/users";
-import { setPlayerId, startGame, resetPlayers, resetServe } from "../redux/actions/game";
+const SIZER_GIF =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
 class StartGame extends Component {
-  componentDidMount = () => {
-    this.props.fetchUsers();
-    this.props.resetPlayers();
-    this.props.resetServe();
+  componentDidMount() {
+    this.props.resetGame();
+    this.props.fetchPlayers();
+  }
+
+  selectPlayer1ID = event => {
+    this.props.setPlayer1ID(event.target.value);
   };
 
-  onSelectOption = which => event => {
-    this.props.setPlayerId(which, event.target.value);
+  selectPlayer2ID = event => {
+    this.props.setPlayer2ID(event.target.value);
   };
 
   startGame = () => {
     this.props.startGame();
-    this.props.history.push("/game");
+    this.props.history.push('/game');
   };
 
   render() {
-    const { users, players } = this.props;
+    const { players, player1ID, player2ID, player1, player2 } = this.props;
     return (
-      <div>
-        {players.map((player, index, playerList) => {
-          const user = users.find(user => user._id === player.id);
-          return (
-            <div key={index}>
-              <h3>
-                {index === 0 ? "Server" : "Challenger"}
-                {user && `: ${user.name}`}
-              </h3>
-              <figure
-                style={{ display: "block", width: 64, height: 64, backgroundColor: "lightgrey" }}
-              >
-                {user && <img width={64} src={user.slack_image} alt={user.name} />}
-              </figure>
-              <select value={player.id || ""} onChange={this.onSelectOption(index)}>
-                <option>Select Player</option>
-                {users.map(user => (
-                  <option
-                    key={user._id}
-                    disabled={playerList.map(p => p.id).includes(user._id) && player !== user._id}
-                    value={user._id}
-                  >
-                    {user.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-          );
-        })}
-        <div>
-          <button disabled={!players.every(player => player.id)} onClick={this.startGame}>
-            Start Game
+      <div className="container start-game">
+        <div className="panels">
+          <div>
+            <figure className="player-thumb">
+              <img
+                src={player1 ? player1.slack_image_512 : SIZER_GIF}
+                alt={player1 ? player1.name : ''}
+              />
+            </figure>
+            <select value={player1ID || ''} onChange={this.selectPlayer1ID}>
+              <option value="">First Serve</option>
+              {players.map(player => (
+                <option
+                  disabled={player2ID === player._id}
+                  key={player._id}
+                  value={player._id}
+                >
+                  {player.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <figure className="player-thumb">
+              <img
+                src={player2 ? player2.slack_image_512 : SIZER_GIF}
+                alt={player2 ? player2.name : ''}
+              />
+            </figure>
+            <select value={player2ID || ''} onChange={this.selectPlayer2ID}>
+              <option value="">Challenger</option>
+              {players.map(player => (
+                <option
+                  disabled={player1ID === player._id}
+                  key={player._id}
+                  value={player._id}
+                >
+                  {player.name}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+        <div className="start-button">
+          <button disabled={!player1ID || !player2ID} onClick={this.startGame}>
+            Start
           </button>
         </div>
       </div>
@@ -64,28 +87,25 @@ class StartGame extends Component {
   }
 }
 
-StartGame.propTypes = {
-  users: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  players: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  history: PropTypes.shape({}).isRequired,
-  fetchUsers: PropTypes.func.isRequired,
-  setPlayerId: PropTypes.func.isRequired,
-  startGame: PropTypes.func.isRequired,
-  resetPlayers: PropTypes.func.isRequired,
-  resetServe: PropTypes.func.isRequired,
+const mapStateToProps = state => {
+  const players = state.players.playerList;
+  const player1ID = state.game.player1ID;
+  const player2ID = state.game.player2ID;
+  return {
+    players: players,
+    player1ID: player1ID,
+    player2ID: player2ID,
+    player1: players.find(player => player._id === player1ID),
+    player2: players.find(player => player._id === player2ID),
+  };
 };
 
-const mapStateToProps = state => ({
-  users: state.users.users,
-  players: state.game.players,
-});
-
 const mapDispatchToProps = {
-  fetchUsers,
-  setPlayerId,
-  startGame,
-  resetPlayers,
-  resetServe,
+  fetchPlayers: fetchPlayers,
+  setPlayer1ID: setPlayer1ID,
+  setPlayer2ID: setPlayer2ID,
+  startGame: startGame,
+  resetGame: resetGame,
 };
 
 export default withRouter(
