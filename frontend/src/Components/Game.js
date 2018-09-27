@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
-import Player from "./Player";
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Player from './Player';
 import {
   setPlayer1Score,
   setPlayer2Score,
@@ -9,13 +9,13 @@ import {
   setServeCount,
   setServingPlayer,
   endGame,
-} from "../redux/actions/game.actions";
+} from '../redux/actions/game.actions';
 
 class Game extends Component {
   componentDidMount() {
     const { player1ID, player2ID, history, setServingPlayer } = this.props;
     if (!player1ID || !player2ID) {
-      history.replace("/");
+      history.replace('/');
     } else {
       setServingPlayer(this.props.player1ID);
     }
@@ -23,7 +23,8 @@ class Game extends Component {
 
   componentDidUpdate(prevProps) {
     // Whether the serve count has decremented
-    const hasSubtractedServeCount = prevProps.serveCount > this.props.serveCount;
+    const hasSubtractedServeCount =
+      prevProps.serveCount > this.props.serveCount;
     // Whether the serve count has just passed a multiple of 5
     const shouldSwapSubtractedPlayersUnder20 =
       prevProps.serveCount % 5 === 0 && this.props.serveCount % 5 !== 0;
@@ -62,7 +63,13 @@ class Game extends Component {
   }
 
   findWinner() {
-    const { player1Score, player2Score, player1ID, player2ID, declareWinner } = this.props;
+    const {
+      player1Score,
+      player2Score,
+      player1ID,
+      player2ID,
+      declareWinner,
+    } = this.props;
     if (player1Score >= 21 && player2Score <= player1Score - 2) {
       declareWinner(player1ID);
     } else if (player2Score >= 21 && player1Score <= player2Score - 2) {
@@ -73,8 +80,15 @@ class Game extends Component {
   }
 
   changeServingPlayer() {
-    const { setServingPlayer, whichPlayerIsServing, player1ID, player2ID } = this.props;
-    setServingPlayer(whichPlayerIsServing === player1ID ? player2ID : player1ID);
+    const {
+      setServingPlayer,
+      whichPlayerIsServing,
+      player1ID,
+      player2ID,
+    } = this.props;
+    setServingPlayer(
+      whichPlayerIsServing === player1ID ? player2ID : player1ID
+    );
   }
 
   findNextServe() {
@@ -117,10 +131,10 @@ class Game extends Component {
   };
 
   sendFinalResultAndEndGame = () => {
-    fetch("https://paddlr-test.herokuapp.com/api/games", {
-      method: "POST",
+    fetch('https://paddlr-test.herokuapp.com/api/games', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         players: [
@@ -137,7 +151,7 @@ class Game extends Component {
     })
       .then(response => response.json())
       .then(response => {
-        console.log("Game saved", response);
+        console.log('Game saved', response);
         this.props.endGame();
       });
   };
@@ -155,33 +169,47 @@ class Game extends Component {
       whichPlayerIsServing,
     } = this.props;
     return player1 && player2 ? (
-      <div>
-        <div className="left">
-          <Player
-            player={player1}
-            points={player1Score}
-            onScoreIncremented={this.incrementPlayer1Score}
-            onScoreDecremented={this.decrementPlayer1Score}
-            shouldShowButtons={!winningPlayer}
-            isServing={whichPlayerIsServing === player1ID}
+      <div className="container scoreboard">
+        <div className="net-container">
+          <div
+            className={`net-shadow ${
+              whichPlayerIsServing === player1ID ? 'left' : 'right'
+            }`}
           />
+          <div className="net" />
         </div>
-        <div className="right">
-          <Player
-            player={player2}
-            points={player2Score}
-            onScoreIncremented={this.incrementPlayer2Score}
-            onScoreDecremented={this.decrementPlayer2Score}
-            shouldShowButtons={!winningPlayer}
-            isServing={whichPlayerIsServing === player2ID}
-          />
+        <div className="panels">
+          <div>
+            <Player
+              player={player1}
+              points={player1Score}
+              onScoreIncremented={this.incrementPlayer1Score}
+              onScoreDecremented={this.decrementPlayer1Score}
+              shouldShowButtons={!winningPlayer}
+              isServing={whichPlayerIsServing === player1ID}
+              isWinningPlayer={winningPlayer === player1ID}
+              inProgress={inProgress}
+            />
+          </div>
+          <div>
+            <Player
+              player={player2}
+              points={player2Score}
+              onScoreIncremented={this.incrementPlayer2Score}
+              onScoreDecremented={this.decrementPlayer2Score}
+              shouldShowButtons={!winningPlayer}
+              isServing={whichPlayerIsServing === player2ID}
+              isWinningPlayer={winningPlayer === player2ID}
+              inProgress={inProgress}
+            />
+          </div>
         </div>
         {winningPlayer &&
           inProgress && (
-            <div>
-              Are you sure this is the final result?
-              <button onClick={this.sendFinalResultAndEndGame}>Yes</button>
-              <button onClick={this.decreaseWinningScore}>No</button>
+            <div className="are-you-sure">
+              <div>Finish game?</div>
+              <button onClick={this.decreaseWinningScore}>✗</button>
+              <button onClick={this.sendFinalResultAndEndGame}>✓</button>
             </div>
           )}
       </div>

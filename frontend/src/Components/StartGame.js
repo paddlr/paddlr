@@ -1,8 +1,16 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { withRouter } from "react-router-dom";
-import { fetchPlayers } from "../redux/actions/players.actions";
-import { setPlayer1ID, setPlayer2ID, startGame, resetGame } from "../redux/actions/game.actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { fetchPlayers } from '../redux/actions/players.actions';
+import {
+  setPlayer1ID,
+  setPlayer2ID,
+  startGame,
+  resetGame,
+} from '../redux/actions/game.actions';
+
+const SIZER_GIF =
+  'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
 
 class StartGame extends Component {
   componentDidMount() {
@@ -20,38 +28,60 @@ class StartGame extends Component {
 
   startGame = () => {
     this.props.startGame();
-    this.props.history.push("/game");
+    this.props.history.push('/game');
   };
 
   render() {
     const { players, player1ID, player2ID, player1, player2 } = this.props;
     return (
-      <div className="container">
-        <div>
-          {player1 && <img src={player1.slack_image} alt={player1.name} />}
-          <select value={player1ID || ""} onChange={this.selectPlayer1ID}>
-            <option>First Serve</option>
-            {players.map(player => (
-              <option disabled={player2ID === player._id} key={player._id} value={player._id}>
-                {player.name}
-              </option>
-            ))}
-          </select>
+      <div className="container start-game">
+        <div className="panels">
+          <div>
+            <figure className="player-thumb">
+              <img
+                src={player1 ? player1.slack_image_512 : SIZER_GIF}
+                alt={player1 ? player1.name : ''}
+              />
+            </figure>
+            <select value={player1ID || ''} onChange={this.selectPlayer1ID}>
+              <option value="">First Serve</option>
+              {players.map(player => (
+                <option
+                  disabled={player2ID === player._id}
+                  key={player._id}
+                  value={player._id}
+                >
+                  {player.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <figure className="player-thumb">
+              <img
+                src={player2 ? player2.slack_image_512 : SIZER_GIF}
+                alt={player2 ? player2.name : ''}
+              />
+            </figure>
+            <select value={player2ID || ''} onChange={this.selectPlayer2ID}>
+              <option value="">Challenger</option>
+              {players.map(player => (
+                <option
+                  disabled={player1ID === player._id}
+                  key={player._id}
+                  value={player._id}
+                >
+                  {player.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
-        <div>
-          {player2 && <img src={player2.slack_image} alt={player2.name} />}
-          <select value={player2ID || ""} onChange={this.selectPlayer2ID}>
-            <option>Challenger</option>
-            {players.map(player => (
-              <option disabled={player1ID === player._id} key={player._id} value={player._id}>
-                {player.name}
-              </option>
-            ))}
-          </select>
+        <div className="start-button">
+          <button disabled={!player1ID || !player2ID} onClick={this.startGame}>
+            Start
+          </button>
         </div>
-        <button disabled={!player1ID || !player2ID} onClick={this.startGame}>
-          Start Game
-        </button>
       </div>
     );
   }

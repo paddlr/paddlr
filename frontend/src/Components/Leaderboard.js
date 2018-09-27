@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { fetchPlayers } from "../redux/actions/players.actions";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { fetchPlayers } from '../redux/actions/players.actions';
 
 const sortByTotalScore = array =>
   array.slice().sort((a, b) => (a.total_score > b.total_score ? -1 : 1));
@@ -13,13 +13,13 @@ class Leaderboard extends Component {
   render() {
     const { players } = this.props;
     return (
-      <div className="container">
+      <div className="leaderboard container">
         <table>
           <thead>
             <tr>
-              <th>Ranking</th>
+              <th>#</th>
               <th />
-              <th>Name</th>
+              <th>Player</th>
               <th>Won</th>
               <th>Lost</th>
             </tr>
