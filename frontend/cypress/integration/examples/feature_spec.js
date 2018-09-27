@@ -1,12 +1,13 @@
 describe('Feature tests', () => {
-  beforeEach(function(){
-    cy.visit('/');
-    cy.get('#select_server').select('Edward Thomas');
-    cy.get('#select_challenger').select('Danielle');
-    cy.get('#start_game_button').click();
-  })
+  
 
    describe('scoring scenarios..', () => {
+    beforeEach(function(){
+      cy.visit('/');
+      cy.get('#select_server').select('Edward Thomas');
+      cy.get('#select_challenger').select('Danielle');
+      cy.get('#start_game_button').click();
+    })
   it('plays a game of 21-0 and correctly displays winner', () => {
   
     for (var count=0; count < 21; count++) {
