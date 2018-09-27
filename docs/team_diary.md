@@ -29,6 +29,15 @@ Back-End: I carried on with last nights frustrations for literally hours. Hours 
 
 Front-End: During the weekend, the frontend team had issues with managing states and the passing of information. After thorough research, Dani proposed the use of Redux as a solution to these woes. She successfully created a simple experimental mockup of the app that uses redux and proposed its use to the rest of team.
 
-More work was covered over the weekend - this included the scoring logic, generating the leaderboard and switching the paddles to show the server. For the first half of Monday, tensions were really high as some members adamantly disapprove of the use of redux even after a team consensus to use the library to build the interface. This led to a fairly unproductive day for the frontend.
+More work was covered over the weekend - this included the scoring logic, generating the leaderboard and switching the paddles to show the server. For the first half of Monday, tensions were really high as some members adamantly disapprove of the use of redux in building the interface. This led to a fairly unproductive day for the frontend.
 
-On the backend, however, things were working beautifully. During the weekend, Angela fixed the slack integration, API and adjusted the connection settings to work with dotenv.Stephanie didn't do much over the weekend because it was her birthday! However, on Monday, She wrote the scoring logic that figured out the winner of a match. The code also increased each player's points, games won and games lost for every player in a match. She then integrated this with the database and caused player statistics to automatically load with each game. It was a good day for the backend
+On the backend, however, things worked beautifully. During the weekend, Angela fixed the slack integration, API and adjusted the connection settings to work with `dotenv` . Stephanie didn't do much over the weekend because it was her birthday! However, on Monday, she wrote the scoring logic that extracted the winner's information from each game played. Code was written to increase each player's points and games stats. She then integrated this with the database and caused player statistics to automatically load with each game. It was a good day for the backend
+
+### Day 7
+
+Backend: The day was spent adding creating a slackbot to report the scores of each match played in paddlr. The team faced issues in using `node-fetch` to post data to the web-hook address provided by slack. Later on in the day, we discovered that the problem stemmed from `node-fetch`. It was a team decision to eventually change libraries to use Node.js's newer `https` library that seamlessly allowed the passing of data from our API to Slacks. Slack messages were then customised add a bit of humour to the app. The rest of the day was spent refactoring code and writing more tests.
+
+### Day 8
+
+Backend: The day was spent refactoring code, and adding relevant tests to reflect last-minute code. We thought it pointless to test well-tested libraries. For example, the in-built `mongoose` methods that interacted with the database seemed odd to test. We mocked several methods and APIs to isolate the behaviour of key methods within our app. However, we did test the requirements of each column within the model to verify that these validations were being imposed on new data posted to our database.
+
