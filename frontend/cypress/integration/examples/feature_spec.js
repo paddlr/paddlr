@@ -6,7 +6,7 @@ describe('Feature tests', () => {
     cy.get('#start_game_button').click();
   })
 
-  
+   describe('scoring scenarios..', () => {
   it('plays a game of 21-0 and correctly displays winner', () => {
   
     for (var count=0; count < 21; count++) {
@@ -41,7 +41,7 @@ describe('Feature tests', () => {
 
   });
 
-  
+})           
 
 
 });
