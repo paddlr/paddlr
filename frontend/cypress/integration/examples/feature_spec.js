@@ -1,16 +1,21 @@
-describe('Select player', () => {
-  it('choose from list of players', () => {
+describe('Feature tests', () => {
+  beforeEach(function(){
     cy.visit('/');
     cy.get('#select_server').select('Edward Thomas');
     cy.get('#select_challenger').select('Danielle');
     cy.get('#start_game_button').click();
+  })
+
+  
+  it('plays a game of 21-0 and correctly displays winner', () => {
+  
     for (var count=0; count < 21; count++) {
       cy.get('#plus_idE').click();
     }
     cy.get('#end_game').click();
     cy.contains('Edward Thomas').should('be.visible');
-    cy.contains('WINNER').should('be.visible');
-    cy.contains('Score: 21').should('be.visible');
+    cy.contains('Winner!!').should('be.visible');
+    cy.contains('21').should('be.visible');
 
     // cy.url().should('includes', 'teachers');
     // cy.contains('more time to teach');
@@ -25,4 +30,6 @@ describe('Select player', () => {
     // // verify that we were redirected
     // cy.url({ timeout: 3000 }).should('includes', '/c/');
   });
+
+
 });
