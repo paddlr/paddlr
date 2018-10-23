@@ -16,7 +16,7 @@ As this was our final project at Maker's Academy, we decided to pay tribute to i
 * [Tim Blanchard](https://github.com/tblanchard01)
 
 ## Demo
-(To be added)
+[Youtube Video showing app in action](https://www.youtube.com/watch?time_continue=5&v=AThNqpucq-g)
 
 Slack Integration with Smack Talk in the Channel:  
 ![Slack Smack Talk](./docs/images/SlackSmackTalk.jpeg)
