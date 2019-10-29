@@ -22,7 +22,7 @@
     "fawn": "^2.1.5",
     "istanbul": "^0.4.5",
     "lodash": "^4.17.11",
-    "mongoose": "^5.2.15",
+    "mongoose": "^5.7.5",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
     "request": "^2.88.0"
